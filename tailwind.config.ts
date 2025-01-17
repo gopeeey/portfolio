@@ -21,8 +21,10 @@ export default {
         foreground: "var(--foreground)",
       },
       padding: {
-        xs: "2rem",
-        lg: "9rem",
+        xs: "2.3rem",
+        sm: "4rem",
+        lg: "7rem",
+        "2xl": "12rem",
       },
     },
   },
