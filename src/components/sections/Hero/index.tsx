@@ -1,13 +1,17 @@
 "use client";
 
 import Section from "@/components/ui/Section";
+import { useAnimationReadyStore } from "@/hooks/useAnimationReadyStore";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import HeroScene from "./Scene";
 
 export default function HeroSection() {
+  const ready = useAnimationReadyStore((store) => store.heroReady);
+
   useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { duration: 1 } });
+    if (!ready) return;
+    const tl = gsap.timeline({ defaults: { duration: 1, delay: 3 } });
 
     tl.to(".nameLetter", {
       opacity: 1,
@@ -25,7 +29,7 @@ export default function HeroSection() {
       },
       1
     );
-  });
+  }, [ready]);
 
   return (
     <Section
