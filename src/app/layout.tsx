@@ -1,4 +1,5 @@
 import Navbar from "@/components/ui/Navbar";
+import SectionIndicators from "@/components/ui/SectionIndicators";
 import type { Metadata } from "next";
 import { Flamenco, Montserrat } from "next/font/google";
 import "./globals.css";
@@ -28,9 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${flamenco.variable} ${montserrat.variable} antialiased`}
+        className={`${flamenco.variable} ${montserrat.variable} antialiased relative`}
       >
         <Navbar />
+        <SectionIndicators />
         {children}
       </body>
     </html>

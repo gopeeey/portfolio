@@ -33,7 +33,7 @@ export default function HeroSection() {
 
   return (
     <Section
-      id="hero-section"
+      id="hero"
       className="bg-background text-foreground flex flex-col justify-center white-selection"
     >
       <HeroScene />

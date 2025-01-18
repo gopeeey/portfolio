@@ -2,10 +2,10 @@ import { create } from "zustand";
 
 interface AnimationReadyState {
   heroReady: boolean;
-  heroIsReady: () => void;
+  setHeroReady: () => void;
 }
 
 export const useAnimationReadyStore = create<AnimationReadyState>((set) => ({
   heroReady: false,
-  heroIsReady: () => set({ heroReady: true }),
+  setHeroReady: () => set({ heroReady: true }),
 }));

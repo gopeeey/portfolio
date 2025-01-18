@@ -15,11 +15,11 @@ export default function HeroScene() {
   const [camera, setCamera] = useState<THREE.PerspectiveCamera | null>(null);
   const [objectGroup, setObjectGroup] =
     useState<THREE.Group<THREE.Object3DEventMap> | null>(null);
-  const isReady = useAnimationReadyStore((store) => store.heroIsReady);
+  const setReady = useAnimationReadyStore((store) => store.setHeroReady);
 
   useGSAP(() => {
     if (!objectGroup || !camera) return;
-    isReady();
+    setReady();
 
     const tl = gsap.timeline({ defaults: { duration: 4, ease: "power3.out" } });
 
@@ -36,7 +36,7 @@ export default function HeroScene() {
 
   return (
     <View
-      className="w-full h-screen absolute left-0 z-20"
+      className="w-full h-screen absolute left-0 z-20 pointer-events-none"
       style={{ zIndex: 20 }}
     >
       <group>

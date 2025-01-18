@@ -1,6 +1,7 @@
 "use client";
 
-import { Color } from "@/types";
+import useSectionScroll from "@/hooks/useSectionScroll";
+import { Color, SectionName } from "@/types";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -12,46 +13,34 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
   const [color, setColor] = useState<Color>("dark");
+  const activeSection = useSectionScroll({
+    start: "top 10%",
+    end: "bottom 5%",
+  });
 
   useGSAP(() => {
-    const sections = [
-      ["hero-section", "transparent"],
-      ["experience-section", "var(--foreground)"],
-      ["skills-section", "var(--background)"],
-    ];
+    const sectionColors: { [key in SectionName]: string } = {
+      hero: "transparent",
+      experience: "var(--foreground)",
+      skills: "var(--background)",
+      projects: "var(--background)",
+      contact: "var(--foreground)",
+    };
 
-    const colors: { [key: string]: Color } = {
+    const themes: { [key: string]: Color } = {
       transparent: "dark",
       "var(--foreground)": "light",
       "var(--background)": "dark",
     };
 
-    for (let i = 0; i < sections.length; i++) {
-      const section = sections[i][0];
-      const color = sections[i][1];
-      const prevColor = sections[Math.max(0, i - 1)][1];
+    const currentColor = sectionColors[activeSection];
 
-      const callback = () => {
-        setColor(colors[color]);
-      };
-
-      const reverseCallback = () => {
-        setColor(colors[prevColor]);
-      };
-
-      gsap.to("#nav-bar", {
-        backgroundColor: color,
-        scrollTrigger: {
-          trigger: `#${section}`,
-          start: "top top",
-          end: "bottom bottom",
-          toggleActions: "play none reverse none",
-        },
-        onStart: callback,
-        onReverseComplete: reverseCallback,
-      });
-    }
-  });
+    gsap.to("#nav-bar", {
+      background: currentColor,
+      onStart: () => setColor(themes[currentColor]),
+      duration: 0.2,
+    });
+  }, [activeSection]);
 
   const altColor: Color = color === "light" ? "dark" : "light";
   return (
