@@ -37,7 +37,7 @@ export default function HeroSection() {
       className="bg-background text-foreground flex flex-col justify-center white-selection"
     >
       <HeroScene />
-      <h1 className="-mt-24 lg:-mt-0 text-7xl xl:text-8xl relative z-19 tracking-tighter">
+      <h1 className=" -mt-[4.2rem] lg:-mt-0 text-7xl xl:text-8xl relative z-19 tracking-[-0.07em]">
         {"Samuel Gopeh".split(" ").map((word) => (
           <span key={word} className="inline-block mr-4">
             {word.split("").map((letter, index) => (
@@ -51,11 +51,11 @@ export default function HeroSection() {
           </span>
         ))}
       </h1>
-      <p className="relative text-lg md:text-xl mt-5 z-30 paragraph opacity-0 translate-y-4">
+      <p className="relative text-lg md:text-2xl mt-5 z-30 paragraph opacity-0 translate-y-4">
         Full Stack Developer
       </p>
 
-      <p className="relative text-md xl:text-md mt-14 z-30 paragraph opacity-0 translate-y-4">
+      <p className="relative text-lighter_grey text-md xl:text-md mt-10 z-30 w-[90%] md:w-[60%] xl:w-[37%] paragraph opacity-0 translate-y-4">
         I enjoy building efficient and scalable software solutions using clean
         architecture
       </p>

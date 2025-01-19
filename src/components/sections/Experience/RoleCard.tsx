@@ -1,46 +1,36 @@
 import ExternalLinkIcon from "@/components/icons/ExternalLinkIcon";
-import HeyfoodLogo from "@/components/icons/HeyfoodLogo";
+import { Role } from "@/types";
 
-export default function RoleCard() {
+type Props = {
+  role: Role;
+  className?: string;
+};
+
+export default function RoleCard({ role, className }: Props) {
   return (
-    <div>
+    <div className={className}>
       <h2 className="font-flamenco text-4xl md:text-6xl xl:text-7xl">
-        2020 - 2022
+        {role.duration}
       </h2>
       <h1
         className={`text-[1.9rem] md:text-[3rem] xl:text-[5rem] 
         text-light_grey opacity-45 tracking-tighter 
         -mt-5 md:-mt-8 xl:-mt-14 ml-2 md:ml-3`}
       >
-        Full Stack Developer
+        {role.title}
       </h1>
 
       <div className="flex items-center mt-8">
-        <HeyfoodLogo />
-        <span className="ml-3 mr-6 text-lg">Heyfood</span>
+        <role.companyLogo />
+        <span className="ml-3 mr-6 text-lg">{role.companyName}</span>
         <ExternalLinkIcon />
       </div>
 
       <div className="mt-8 md:max-w-[60%] xl:max-w-[40%]">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </p>
+        <p>{role.summary}</p>
 
         <ul className="mt-12 flex flex-wrap">
-          {[
-            "React",
-            "TypeScript",
-            "Node.js",
-            "PostgreSQL",
-            "Redis",
-            "MongoDB",
-            "Japanese",
-            "AWS",
-            "Azure",
-          ].map((skill) => (
+          {role.skills.map((skill) => (
             <li key={skill}>
               <Chip>{skill}</Chip>
             </li>

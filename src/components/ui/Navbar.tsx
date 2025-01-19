@@ -15,7 +15,7 @@ export default function Navbar() {
   const [color, setColor] = useState<Color>("dark");
   const activeSection = useSectionScroll({
     start: "top 10%",
-    end: "bottom 5%",
+    end: "bottom 9%",
   });
 
   useGSAP(() => {
