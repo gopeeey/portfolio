@@ -37,7 +37,7 @@ export default function HeroSection() {
       className="bg-background text-foreground flex flex-col justify-center white-selection"
     >
       <HeroScene />
-      <h1 className="font-montserrat font-bold -mt-28 lg:-mt-0 text-6xl relative z-19 tracking-tighter">
+      <h1 className="-mt-24 lg:-mt-0 text-7xl xl:text-8xl relative z-19 tracking-tighter">
         {"Samuel Gopeh".split(" ").map((word) => (
           <span key={word} className="inline-block mr-4">
             {word.split("").map((letter, index) => (
@@ -55,7 +55,7 @@ export default function HeroSection() {
         Full Stack Developer
       </p>
 
-      <p className="relative text-xs sm:text-sm xl:text-md mt-10 z-30 paragraph opacity-0 translate-y-4">
+      <p className="relative text-md xl:text-md mt-14 z-30 paragraph opacity-0 translate-y-4">
         I enjoy building efficient and scalable software solutions using clean
         architecture
       </p>

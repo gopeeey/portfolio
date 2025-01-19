@@ -19,6 +19,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        light_grey: "#65737E",
       },
       padding: {
         xs: "2.3rem",
