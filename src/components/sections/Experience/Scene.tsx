@@ -1,9 +1,12 @@
 "use client";
 
 import { PerspectiveCamera, View } from "@react-three/drei";
-import { BlackPlanet } from "./BlackPlanet";
+import { BlackPlanet, Props as BlackPlanetProps } from "./BlackPlanet";
 
-export default function ExperienceScene() {
+export default function ExperienceScene({
+  setPlanet,
+  setPlanetGroup,
+}: BlackPlanetProps) {
   return (
     <View
       className="w-full h-screen absolute top-0 left-0 z-20 pointer-events-none"
@@ -12,7 +15,7 @@ export default function ExperienceScene() {
     >
       <group>
         <PerspectiveCamera fov={20} makeDefault position={[0, 0, 6]} />
-        <BlackPlanet />
+        <BlackPlanet setPlanet={setPlanet} setPlanetGroup={setPlanetGroup} />
       </group>
     </View>
   );
