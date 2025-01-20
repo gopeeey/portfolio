@@ -1,5 +1,12 @@
 import type { Config } from "tailwindcss";
 
+const customLengths = {
+  xs: "2.3rem",
+  sm: "4rem",
+  lg: "7rem",
+  "2xl": "12rem",
+};
+
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -19,13 +26,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        light_grey: "#65737E",
+        lighter_grey: "#859099",
       },
-      padding: {
-        xs: "2.3rem",
-        sm: "4rem",
-        lg: "7rem",
-        "2xl": "12rem",
-      },
+      padding: { ...customLengths },
+      margin: { ...customLengths },
     },
   },
   plugins: [],

@@ -15,7 +15,7 @@ export default function Navbar() {
   const [color, setColor] = useState<Color>("dark");
   const activeSection = useSectionScroll({
     start: "top 10%",
-    end: "bottom 5%",
+    end: "bottom 9%",
   });
 
   useGSAP(() => {
@@ -45,7 +45,7 @@ export default function Navbar() {
   const altColor: Color = color === "light" ? "dark" : "light";
   return (
     <nav
-      className={`flex fixed z-[30] w-full justify-between items-center m-0 px-xs py-6 sm:px-sm lg:px-lg 2xl:px-2xl lg:py-7 bg-transparent`}
+      className={`flex fixed z-[40] w-full justify-between items-center m-0 px-xs py-6 sm:px-sm lg:px-lg 2xl:px-2xl lg:py-7 bg-transparent`}
       id="nav-bar"
     >
       <Logo color={altColor} />

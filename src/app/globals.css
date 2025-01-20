@@ -10,6 +10,7 @@
 body {
   font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
   background: var(--foreground);
+  letter-spacing: -0.03rem;
 }
 
 nav {
@@ -36,4 +37,10 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   background-color: black;
   outline: 1px solid slategrey;
+}
+
+.sticky_container {
+  min-height: 130vh;
+  position: relative;
+  /* background-color: blue; */
 }
