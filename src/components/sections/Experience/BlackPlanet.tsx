@@ -35,7 +35,7 @@ export function BlackPlanet({ setPlanet, setPlanetGroup }: Props) {
     <group
       dispose={null}
       rotation={[0, 0, Math.PI / 9]}
-      position={[-2.5, 2.5, 0]}
+      position={[-2.17, 2.17, 0]}
       scale={1.3}
       ref={(node) => {
         if (node) setPlanetGroup(node);

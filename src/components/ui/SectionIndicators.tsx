@@ -51,6 +51,8 @@ export default function SectionIndicators() {
         background:
           sectionColorMap[currentSection] === "dark"
             ? "var(--foreground)"
+            : currentSection === "experience" && window.innerWidth >= 768
+            ? "var(--foreground)"
             : "var(--background)",
         delay: introAnimation.current ? 0 : isHero ? 4.7 : 0,
       },
@@ -76,6 +78,11 @@ export default function SectionIndicators() {
             mb-6 cursor-pointer rounded-sm opacity-0 
             block
             ${theme === "light" ? "border-background" : "border-foreground"}
+            ${
+              theme === "light" && currentSection === "experience"
+                ? "sm:border-foreground"
+                : ""
+            }
             ${currentSection === section ? "current-section" : ""}`}
           style={{
             transform: `translate(0px, -${
