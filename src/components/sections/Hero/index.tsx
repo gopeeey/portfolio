@@ -56,8 +56,7 @@ export default function HeroSection() {
       </p>
 
       <p className="relative text-lighter_grey text-md xl:text-md mt-10 z-30 w-[90%] md:w-[60%] xl:w-[37%] paragraph opacity-0 translate-y-4">
-        I enjoy building efficient and scalable software solutions using clean
-        architecture
+        I build efficient software solutions with clean architecture.
       </p>
     </Section>
   );

@@ -38,3 +38,9 @@ body::-webkit-scrollbar-thumb {
   background-color: black;
   outline: 1px solid slategrey;
 }
+
+.sticky_container {
+  min-height: 130vh;
+  position: relative;
+  /* background-color: blue; */
+}

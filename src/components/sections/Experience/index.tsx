@@ -19,25 +19,34 @@ export default function Experience() {
 
   useGSAP(() => {
     if (!planetGroup || !planet) return;
-    console.log("Running planet animation");
 
-    const tl = gsap.timeline({ defaults: { duration: 10 } });
-    const trigger = ScrollTrigger.create({
-      animation: tl,
+    gsap.to(planet.rotation, {
+      z: Math.PI * 13,
+      scrollTrigger: {
+        trigger: "#experience",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 2,
+        pin: "#experience-scene",
+        id: "black-planet-rotation",
+      },
+    });
+
+    const introTimeline = gsap.timeline({ defaults: { duration: 10 } });
+    ScrollTrigger.create({
+      animation: introTimeline,
       trigger: "#experience",
       start: "top top",
-      end: "bottom bottom",
-      scrub: 1.5,
-      pin: "#experience-scene",
+      end: "50% bottom",
+      scrub: 2,
+      id: "experience-intro",
     });
 
     // This animation does nothing but help me keep the
     // timeline at 10 seconds
-    tl.to("#experience-container", { opacity: "1" }, 0);
+    introTimeline.to("#experience-container", { opacity: "1" }, 0);
 
-    tl.to(planet.rotation, { z: Math.PI * 10 }, 0);
-
-    tl.to(
+    introTimeline.to(
       planetGroup.position,
       {
         x: 1.5,
@@ -47,7 +56,7 @@ export default function Experience() {
       0
     );
 
-    tl.to(
+    introTimeline.to(
       ".header_letter",
       {
         opacity: 1,
@@ -56,10 +65,10 @@ export default function Experience() {
         ease: "back.out(3)",
         duration: 2,
       },
-      ">"
+      ">-12%"
     );
 
-    tl.to(
+    introTimeline.to(
       ".experience-subtext",
       {
         opacity: 1,
@@ -69,38 +78,78 @@ export default function Experience() {
       ">-55%"
     );
 
-    return () => trigger.kill();
+    // Role cards
+    roles.forEach((role) => {
+      const roleTimeline = gsap.timeline({ default: { duration: 1 } });
+      ScrollTrigger.create({
+        animation: roleTimeline,
+        trigger: `#role_container_${role.id}`,
+        start: "top 20%",
+        end: "bottom 40%",
+        scrub: 2.5,
+        pin: `#role_${role.id}`,
+        id: `role_${role.id}-trigger`,
+      });
+
+      roleTimeline.to(`.role_header_${role.id}`, { x: 0, opacity: 1 }, 0);
+
+      roleTimeline.to(`.role_text_${role.id}`, {
+        y: 0,
+        opacity: 0.45,
+        // duration: 2,
+      });
+
+      roleTimeline.to(
+        `.role_details_${role.id}`,
+        { y: 0, opacity: 1 },
+        ">-25%"
+      );
+
+      roleTimeline.to(
+        `.role_${role.id}_skills`,
+        { opacity: 1, y: 0, stagger: 0.1 },
+        ">-55%"
+      );
+    });
   }, [planetGroup]);
 
   return (
-    <Section id="experience" className="">
+    <Section id="experience">
       <ExperienceScene
         setPlanet={(p) => setPlanet(p)}
         setPlanetGroup={(pg) => setPlanetGroup(pg)}
       />
 
-      <div className="relative z-30 mt-[120rem]" id="experience-container">
-        <h1
-          className="font-montserrat text-[2.8rem] md:text-[3.4rem] xl:text-[5rem]"
-          id="experience-header"
-        >
-          {"Experience".split("").map((letter, index) => (
-            <span
-              key={index}
-              className="inline-block header_letter opacity-0 scale-0"
-            >
-              {letter}
-            </span>
-          ))}
-        </h1>
-        <p className="experience-subtext xl:text-[1.4rem] opacity-0 translate-y-4">
-          Where Skills Meet Story
-        </p>
+      <div className="sticky_container mt-[60rem] h-[40vh]">
+        <div className="sticky top-[20rem] z-30" id="experience-container">
+          <h1
+            className="font-montserrat text-[2.8rem] md:text-[3.4rem] xl:text-[5rem]"
+            id="experience-header"
+          >
+            {"Experience".split("").map((letter, index) => (
+              <span
+                key={index}
+                className="inline-block header_letter opacity-0 scale-0"
+              >
+                {letter}
+              </span>
+            ))}
+          </h1>
+          <p className="experience-subtext xl:text-[1.4rem] opacity-0 translate-y-4">
+            Where Skills Meet Story
+          </p>
+        </div>
       </div>
 
       <div className="mt-[35rem]">
         {roles.map((role) => (
-          <RoleCard key={role.companyName} role={role} className="mb-[10rem]" />
+          <div
+            key={role.id}
+            className="sticky_container h-[150vh] mb-[40rem]"
+            id={`role_container_${role.id}`}
+          >
+            <RoleCard role={role} className="relative mb-[10rem] z-[30]" />
+          </div>
         ))}
       </div>
     </Section>

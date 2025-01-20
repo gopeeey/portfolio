@@ -3,6 +3,7 @@ import { Role } from "@/types";
 
 export const roles: Role[] = [
   {
+    id: 1,
     title: "Full Stack Developer",
     companyName: "Heyfood",
     companyLogo: HeyfoodLogo,
@@ -23,6 +24,7 @@ export const roles: Role[] = [
   },
 
   {
+    id: 2,
     title: "Full Stack Developer",
     companyName: "Turing",
     companyLogo: HeyfoodLogo,
@@ -43,6 +45,7 @@ export const roles: Role[] = [
   },
 
   {
+    id: 3,
     title: "Full Stack Developer",
     companyName: "Blending Bytes",
     companyLogo: HeyfoodLogo,

@@ -9,6 +9,7 @@ export type SectionName =
   | "contact";
 
 export type Role = {
+  id: number;
   duration: string;
   title: string;
   companyName: string;
