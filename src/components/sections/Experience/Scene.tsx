@@ -9,7 +9,7 @@ export default function ExperienceScene({
 }: BlackPlanetProps) {
   return (
     <View
-      className="w-full h-screen absolute top-0 left-0 z-20 pointer-events-none"
+      className="w-full h-screen top-0 left-0 z-20 pointer-events-none"
       style={{ zIndex: 20 }}
       id="experience-scene"
     >

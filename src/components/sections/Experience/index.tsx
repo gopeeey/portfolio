@@ -115,10 +115,12 @@ export default function Experience() {
 
   return (
     <Section id="experience">
-      <ExperienceScene
-        setPlanet={(p) => setPlanet(p)}
-        setPlanetGroup={(pg) => setPlanetGroup(pg)}
-      />
+      <div className="absolute w-full top-0 left-0 overflow-x-hidden">
+        <ExperienceScene
+          setPlanet={(p) => setPlanet(p)}
+          setPlanetGroup={(pg) => setPlanetGroup(pg)}
+        />
+      </div>
 
       <div className="sticky_container mt-[60rem] h-[40vh]">
         <div className="sticky top-[20rem] z-30" id="experience-container">

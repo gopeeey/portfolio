@@ -19,18 +19,6 @@ export type Props = {
 export function BlackPlanet({ setPlanet, setPlanetGroup }: Props) {
   const { nodes, materials } = useGLTF("/black_planet.glb");
 
-  // useEffect(() => {
-  //   const animate = (t: number) => {
-  //     if (!meshRef.current) return;
-
-  //     const val = t * 0.0005;
-  //     meshRef.current.rotation.z = val;
-
-  //     requestAnimationFrame(animate);
-  //   };
-
-  //   animate(0);
-  // });
   return (
     <group
       dispose={null}
