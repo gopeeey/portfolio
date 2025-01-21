@@ -50,7 +50,7 @@ export function Person({ camera }: Props) {
       planeNormal.copy(camera.position).normalize();
       plane.setFromNormalAndCoplanarPoint(
         planeNormal,
-        new THREE.Vector3(0, 0, 0)
+        new THREE.Vector3(0, 0, -10)
       );
       raycaster.setFromCamera(mousePosition, camera);
       raycaster.ray.intersectPlane(plane, intersectionPoint);
