@@ -6,7 +6,7 @@ import * as THREE from "three";
 
 export function Planets() {
   const group = useRef<THREE.Group<THREE.Object3DEventMap>>(null);
-  const { nodes, materials, animations } = useGLTF("/planets.glb");
+  const { nodes, materials, animations } = useGLTF("/models/planets.glb");
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
@@ -179,4 +179,4 @@ export function Planets() {
   );
 }
 
-useGLTF.preload("/planets.glb");
+useGLTF.preload("/models/planets.glb");

@@ -17,7 +17,7 @@ export type Props = {
 };
 
 export function BlackPlanet({ setPlanet, setPlanetGroup }: Props) {
-  const { nodes, materials } = useGLTF("/black_planet.glb");
+  const { nodes, materials } = useGLTF("/models/black_planet.glb");
 
   return (
     <group
@@ -67,4 +67,4 @@ export function BlackPlanet({ setPlanet, setPlanetGroup }: Props) {
   );
 }
 
-useGLTF.preload("/black_planet.glb");
+useGLTF.preload("/models/black_planet.glb");

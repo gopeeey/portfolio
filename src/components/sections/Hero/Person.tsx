@@ -15,7 +15,7 @@ const MIN_COOL_DOWN = 3;
 
 export function Person({ camera }: Props) {
   const group = useRef<THREE.Group<THREE.Object3DEventMap>>(null);
-  const { nodes, materials, animations } = useGLTF("/male_body.glb");
+  const { nodes, materials, animations } = useGLTF("/models/male_body.glb");
   const { actions } = useAnimations(animations, group);
   const meshRef = useRef<THREE.SkinnedMesh<
     THREE.BufferGeometry<THREE.NormalBufferAttributes>,
@@ -168,4 +168,4 @@ export function Person({ camera }: Props) {
 
 Person.displayName = "Person";
 
-useGLTF.preload("/male_body.glb");
+useGLTF.preload("/models/male_body.glb");

@@ -26,7 +26,7 @@ export default function Experience() {
         trigger: "#experience",
         start: "top top",
         end: "bottom bottom",
-        scrub: 2,
+        scrub: 1.5,
         pin: "#experience-scene",
         id: "black-planet-rotation",
       },
@@ -38,7 +38,7 @@ export default function Experience() {
       trigger: "#experience",
       start: "top top",
       end: "50% bottom",
-      scrub: 2,
+      scrub: 1.5,
       id: "experience-intro",
     });
 
@@ -86,7 +86,7 @@ export default function Experience() {
         trigger: `#role_container_${role.id}`,
         start: "top 20%",
         end: "bottom 40%",
-        scrub: 2.5,
+        scrub: 1.5,
         pin: `#role_${role.id}`,
         id: `role_${role.id}-trigger`,
       });
