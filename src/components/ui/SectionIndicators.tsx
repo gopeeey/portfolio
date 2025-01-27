@@ -8,7 +8,7 @@ import gsap from "gsap";
 import { useMemo, useRef } from "react";
 
 export default function SectionIndicators() {
-  const ready = useAnimationReadyStore((state) => state.heroReady);
+  const heroReady = useAnimationReadyStore((state) => state.heroReady);
   const currentSection = useSectionScroll({
     start: "top 80%",
     end: "bottom 79%",
@@ -16,9 +16,8 @@ export default function SectionIndicators() {
   const introAnimation = useRef<boolean | null>(false);
 
   useGSAP(() => {
-    if (!ready) return;
-
     const isHero = currentSection === "hero";
+    if (isHero && !heroReady) return;
 
     const tl = gsap.timeline({
       defaults: {
@@ -60,7 +59,7 @@ export default function SectionIndicators() {
     );
 
     introAnimation.current = true;
-  }, [ready, currentSection]);
+  }, [heroReady, currentSection]);
 
   const theme = useMemo(
     () => sectionColorMap[currentSection],
@@ -75,7 +74,7 @@ export default function SectionIndicators() {
           className={`
             section-indicator w-3 h-3 border-solid 
             border-[1.5px]
-            mb-6 cursor-pointer rounded-sm opacity-0 
+            mb-6 cursor-pointer rounded-[0.19rem] opacity-0 
             block
             ${theme === "light" ? "border-background" : "border-foreground"}
             ${

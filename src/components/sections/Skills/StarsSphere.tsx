@@ -38,7 +38,7 @@ const StarsSphere = forwardRef<THREE.Group, Props>(
       };
     }, [count, minRadius, maxRadius]);
     return (
-      <group ref={ref} rotation={[Math.PI / 4, 0, 0]}>
+      <group ref={ref} rotation={[Math.PI / 2, 0, Math.PI / 2]}>
         <points>
           <bufferGeometry attach={"geometry"}>
             <bufferAttribute
