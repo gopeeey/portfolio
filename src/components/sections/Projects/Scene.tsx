@@ -13,7 +13,7 @@ export default function ProjectsScene() {
     const ctx = gsap.context(() => {
       if (stars) {
         gsap.to(stars.rotation, {
-          x: Math.PI,
+          x: 1.3 * Math.PI,
           ease: "none",
           scrollTrigger: {
             trigger: "#projects",

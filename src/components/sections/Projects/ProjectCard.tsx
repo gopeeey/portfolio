@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function ProjectCard() {
   return (
-    <div className="text-lighter_grey mb-[10rem]">
+    <div className="text-lighter_grey mb-[10rem] project_card ">
       <a href="https://google.com" target="__blank">
         <div className="overflow-hidden rounded-2xl border-[1.6px] border-foreground">
           <Image
