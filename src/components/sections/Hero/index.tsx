@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import HeroScene from "./Scene";
 
-export default function HeroSection() {
+export default function Hero() {
   const ready = useAnimationReadyStore((store) => store.heroReady);
 
   useGSAP(() => {

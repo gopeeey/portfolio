@@ -1,4 +1,5 @@
 import ExternalLinkIcon from "@/components/icons/ExternalLinkIcon";
+import Chip from "@/components/ui/Chip";
 import { Role } from "@/types";
 
 type Props = {
@@ -48,13 +49,5 @@ export default function RoleCard({ role, className }: Props) {
         </div>
       </div>
     </div>
-  );
-}
-
-function Chip({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="mr-2 mb-2 inline-block text-xs bg-light_grey text-white px-2 py-1 text-center rounded-md">
-      {children}
-    </span>
   );
 }

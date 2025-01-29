@@ -22,7 +22,7 @@ export default function Navbar() {
     const sectionColors: { [key in SectionName]: string } = {
       hero: "transparent",
       experience: "var(--foreground)",
-      skills: "var(--background)",
+      skills: "transparent",
       projects: "var(--background)",
       contact: "var(--foreground)",
     };

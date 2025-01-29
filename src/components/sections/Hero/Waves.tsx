@@ -9,7 +9,7 @@ const FREQUENCY = 60;
 const AMPLITUDE = 0.001;
 
 export function Waves() {
-  const { nodes, materials } = useGLTF("/black_plane_with_outline.glb");
+  const { nodes, materials } = useGLTF("/models/black_plane_with_outline.glb");
   const outlineRef = useRef<THREE.Mesh<
     THREE.BufferGeometry<THREE.NormalBufferAttributes>,
     THREE.Material | THREE.Material[],
@@ -88,4 +88,4 @@ export function Waves() {
   );
 }
 
-useGLTF.preload("/black_plane_with_outline.glb");
+useGLTF.preload("/models/black_plane_with_outline.glb");
