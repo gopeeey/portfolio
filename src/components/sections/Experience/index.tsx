@@ -1,5 +1,6 @@
 "use client";
 
+import { Props as BlackPlanetProps } from "@/components/BlackPlanet";
 import SectionTitle from "@/components/SectionTitle";
 import Section from "@/components/ui/Section";
 import { roles } from "@/lib/data";
@@ -7,12 +8,15 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useState } from "react";
-import { Props as BlackPlanetProps } from "./BlackPlanet";
 import RoleCard from "./RoleCard";
 import ExperienceScene from "./Scene";
 
-type Planet = Parameters<BlackPlanetProps["setPlanet"]>[number];
-type PlanetGroup = Parameters<BlackPlanetProps["setPlanetGroup"]>[number];
+type Planet = Parameters<
+  Exclude<BlackPlanetProps["setPlanet"], undefined>
+>[number];
+type PlanetGroup = Parameters<
+  Exclude<BlackPlanetProps["setPlanetGroup"], undefined>
+>[number];
 
 const sectionId = "experience";
 

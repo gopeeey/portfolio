@@ -1,7 +1,10 @@
 "use client";
 
+import {
+  BlackPlanet,
+  Props as BlackPlanetProps,
+} from "@/components/BlackPlanet";
 import { PerspectiveCamera, View } from "@react-three/drei";
-import { BlackPlanet, Props as BlackPlanetProps } from "./BlackPlanet";
 
 export default function ExperienceScene({
   setPlanet,

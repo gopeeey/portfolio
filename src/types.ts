@@ -17,3 +17,5 @@ export type Role = {
   summary: string;
   skills: string[];
 };
+
+export type CurrentContactAnimation = "rest" | "hover" | "fly";

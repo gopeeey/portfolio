@@ -36,7 +36,10 @@ export default function Hero() {
       id="hero"
       className="bg-background text-foreground flex flex-col justify-center white-selection"
     >
-      <HeroScene />
+      <div className="absolute w-screen top-0 left-0 overflow-x-hidden">
+        <HeroScene />
+      </div>
+
       <h1 className=" -mt-[4.2rem] lg:-mt-0 text-7xl xl:text-8xl relative z-19 tracking-[-0.07em]">
         {"Samuel Gopeh".split(" ").map((word) => (
           <span key={word} className="inline-block mr-4">

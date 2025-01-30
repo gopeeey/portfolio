@@ -103,7 +103,7 @@ export default function SkillsScene() {
 
   return (
     <View
-      className="w-full h-screen absolute left-0 z-20 pointer-events-none"
+      className="w-screen h-screen absolute left-0 z-20 pointer-events-none"
       style={{ zIndex: 20 }}
       id="skills_scene"
     >

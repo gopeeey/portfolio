@@ -1,3 +1,5 @@
+"use client";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
@@ -73,12 +75,16 @@ export default function SectionTitle({
             `}
           id={`${sectionId}_header`}
         >
-          {header.split("").map((letter, index) => (
-            <span
-              key={index}
-              className={`inline-block ${sectionId}_header_letter opacity-0 scale-0`}
-            >
-              {letter}
+          {header.split(" ").map((word) => (
+            <span key={word} className="inline-block mr-3">
+              {word.split("").map((letter, index) => (
+                <span
+                  key={index}
+                  className={`inline-block ${sectionId}_header_letter opacity-0 scale-0`}
+                >
+                  {letter}
+                </span>
+              ))}
             </span>
           ))}
         </h1>
