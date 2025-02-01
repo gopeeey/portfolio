@@ -26,6 +26,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        foreground_transparent: "var(--transparent-foreground)",
         light_grey: "#65737E",
         lighter_grey: "#859099",
       },

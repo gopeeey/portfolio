@@ -67,7 +67,7 @@ export default function SectionIndicators() {
   );
 
   return (
-    <div className="fixed text-white z-30 top-[65vh] left-[100%] -translate-x-[100%] pr-xs sm:pr-sm lg:pr-lg 2xl:pr-2xl">
+    <div className="fixed text-white z-50 top-[65vh] left-[100%] -translate-x-[100%] pr-xs sm:pr-sm lg:pr-lg 2xl:pr-2xl">
       {sections.map((section, index) => (
         <button
           key={section}

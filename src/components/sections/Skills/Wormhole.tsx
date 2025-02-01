@@ -145,6 +145,11 @@ export default function Wormhole({ geometry, camera }: Props) {
         }}
       >
         <Text content="Skills" position={[-0.2, 0, 0]} />
+        <Text
+          content="Tools of Mastery"
+          size={0.05}
+          position={[-0.18, -0.15, 0]}
+        />
       </group>
 
       <AWS ref={awsRef} />

@@ -5,6 +5,7 @@
 :root {
   --background: #000000;
   --foreground: #ede9e9;
+  --transparent-foreground: rgba(237, 233, 233, 0.5);
 }
 
 body {
@@ -42,5 +43,12 @@ body::-webkit-scrollbar-thumb {
 .sticky_container {
   min-height: 130vh;
   position: relative;
-  /* background-color: blue; */
+}
+
+.submit:hover > span {
+  left: 72%;
+}
+
+.submit:active {
+  scale: 0.95;
 }
