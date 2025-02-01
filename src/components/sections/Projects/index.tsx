@@ -27,7 +27,7 @@ export default function Projects() {
       />
 
       <div
-        className="relative z-30 mt-[60rem] md:grid md:grid-cols-2 2xl:grid-cols-3 gap-14"
+        className="relative z-30 mt-[34rem] md:mt-[40rem] md:grid md:grid-cols-2 2xl:grid-cols-3 gap-14"
         id="projects_list_container"
       >
         <ProjectCard />

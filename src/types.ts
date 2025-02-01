@@ -18,4 +18,16 @@ export type Role = {
   skills: string[];
 };
 
+export type Social = {
+  name: string;
+  link: string;
+  icon: () => React.ReactElement;
+};
+
 export type CurrentContactAnimation = "rest" | "hover" | "fly";
+
+export type EmailData = {
+  email: string;
+  name: string;
+  message: string;
+};

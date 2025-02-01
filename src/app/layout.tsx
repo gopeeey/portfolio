@@ -1,7 +1,9 @@
+import Footer from "@/components/ui/Footer";
 import Navbar from "@/components/ui/Navbar";
 import SectionIndicators from "@/components/ui/SectionIndicators";
 import type { Metadata } from "next";
 import { Flamenco, Montserrat } from "next/font/google";
+import { ToastContainer } from "react-toastify";
 import "./globals.css";
 
 const flamenco = Flamenco({
@@ -33,7 +35,15 @@ export default function RootLayout({
       >
         <Navbar />
         <SectionIndicators />
+        <ToastContainer
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          theme="colored"
+        />
         {children}
+        <Footer />
       </body>
     </html>
   );

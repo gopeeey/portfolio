@@ -3,7 +3,7 @@
 import { Props as BlackPlanetProps } from "@/components/BlackPlanet";
 import SectionTitle from "@/components/SectionTitle";
 import Section from "@/components/ui/Section";
-import { roles } from "@/lib/data";
+import { roles } from "@/lib/cvData";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
