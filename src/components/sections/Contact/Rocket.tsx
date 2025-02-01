@@ -12,10 +12,6 @@ type Props = {
   currentAnimation: CurrentContactAnimation;
 };
 
-const flameScale = 0.946;
-const rocketPosition = 19.947;
-console.log(flameScale, rocketPosition);
-
 export function Rocket({ currentAnimation }: Props) {
   const group = useRef<THREE.Group | null>(null);
   const { nodes, materials } = useGLTF("/models/rocket.glb");
