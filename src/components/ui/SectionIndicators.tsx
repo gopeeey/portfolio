@@ -3,7 +3,7 @@
 import { sectionColorMap, sections } from "@/constants";
 import { useAnimationReadyStore } from "@/hooks/useAnimationReadyStore";
 import useSectionScroll from "@/hooks/useSectionScroll";
-import { SectionName } from "@/types";
+import { gotoSection } from "@/lib/utils";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useMemo, useRef } from "react";
@@ -67,28 +67,6 @@ export default function SectionIndicators() {
     [currentSection]
   );
 
-  const handleClick = (section: SectionName) => {
-    const target = document.getElementById(section);
-    let offset = 0;
-    if (target) offset = target.offsetTop;
-
-    switch (section) {
-      case "hero":
-        break;
-      case "experience":
-        offset += 670;
-        break;
-      case "skills":
-        offset += 10;
-        break;
-      default:
-        offset += 400;
-        break;
-    }
-
-    window.scrollTo({ behavior: "smooth", top: offset });
-  };
-
   return (
     <div className="fixed text-white z-50 top-[65vh] left-[100%] -translate-x-[100%] pr-xs sm:pr-sm lg:pr-lg 2xl:pr-2xl">
       {sections.map((section, index) => (
@@ -111,7 +89,7 @@ export default function SectionIndicators() {
               2 * 1.125 * index
             }rem) rotate(45deg) scale(0)`,
           }}
-          onClick={() => handleClick(section)}
+          onClick={() => gotoSection(section, "auto")}
         ></button>
       ))}
     </div>

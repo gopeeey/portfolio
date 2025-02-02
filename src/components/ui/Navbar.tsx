@@ -7,7 +7,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useState } from "react";
 import Logo from "../icons/LogoIcon";
-import MenuIcon from "../icons/MenuIcon";
+import Menu from "./Menu";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,7 +50,7 @@ export default function Navbar() {
     >
       <Logo color={altColor} />
 
-      <MenuIcon color={altColor} />
+      <Menu color={altColor} />
     </nav>
   );
 }
