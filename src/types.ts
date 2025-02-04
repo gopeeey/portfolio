@@ -24,8 +24,10 @@ export type Project = {
   title: string;
   description: string;
   technologies: string[];
-  link: string;
   img: string;
+  github: string;
+  demo?: string;
+  npm?: string;
 };
 
 export type Social = {

@@ -100,7 +100,8 @@ export const projects: Project[] = [
       "React",
       "TailwindCSS",
     ],
-    link: "https://github.com/gopeeey/codewatch",
+    github: "https://github.com/gopeeey/codewatch",
+    npm: "https://www.npmjs.com/package/codewatch-core",
     img: "/images/codewatch_screenshot.png",
   },
   {
@@ -116,7 +117,8 @@ export const projects: Project[] = [
       "TypeScript",
       "Node.js",
     ],
-    link: "https://www.npmjs.com/package/bufferbus",
+    github: "https://github.com/gopeeey/bufferbus",
+    npm: "https://www.npmjs.com/package/bufferbus",
     img: "/images/bufferbus_screenshot.png",
   },
   {
@@ -125,7 +127,7 @@ export const projects: Project[] = [
     description:
       "A platform for businesses to create and manage wallets for their users. It implements a RESTful API for creating, funding, and withdrawing from wallets while maintaining accurate transaction records, allowing businesses to focus on writing their business logic.",
     technologies: ["TypeScript", "Node.js", "PostgreSQL", "Redis", "Jest"],
-    link: "https://github.com/gopeeey/paychip",
+    github: "https://github.com/gopeeey/paychip",
     img: "/images/paychip_screenshot.png",
   },
   {
@@ -143,7 +145,8 @@ export const projects: Project[] = [
       "HTML",
       "CSS",
     ],
-    link: "https://satg.gopeh.com",
+    github: "https://github.com/gopeeey/satg",
+    demo: "https://satg.gopeh.com",
     img: "/images/satg_screenshot.png",
   },
   {
@@ -152,7 +155,7 @@ export const projects: Project[] = [
     description:
       "Up Or Down. A simple application for monitoring the up or down status of a user's desired sites. It is built entirely in Node.js without third-party libraries (as an added challenge).",
     technologies: ["JavaScript", "Node.js", "HTML", "CSS"],
-    link: "https://github.com/gopeeey/up_or_down",
+    github: "https://github.com/gopeeey/up_or_down",
     img: "/images/uod_screenshot.png",
   },
   {
@@ -161,7 +164,8 @@ export const projects: Project[] = [
     description:
       "A simple demonstration of simple and complex patterns in rational and irrational numbers.",
     technologies: ["JavaScript", "HTML", "CSS"],
-    link: "https://irrational.gopeh.com/",
+    github: "https://github.com/gopeeey/irrational",
+    demo: "https://irrational.gopeh.com/",
     img: "/images/irrational_screenshot.png",
   },
   {
@@ -170,8 +174,19 @@ export const projects: Project[] = [
     description:
       "Just a fun page that renders pictures, videos and camera input using ASCII characters",
     technologies: ["JavaScript", "HTML", "CSS"],
-    link: "https://asciime.gopeh.com/",
+    github: "https://github.com/gopeeey/ascii-me",
+    demo: "https://asciime.gopeh.com/",
     img: "/images/asciime_screenshot.png",
+  },
+  {
+    id: 8,
+    title: "Personal Website",
+    description:
+      "My personal website featuring a 3d portfolio. Implemented using Three.js and GSAP.",
+    technologies: ["TypeScript", "React", "Next.js", "Three.js", "GSAP"],
+    github: "https://github.com/gopeeey/portfolio",
+    demo: "https://gopeh.com",
+    img: "/images/portfolio_screenshot.png",
   },
 ];
 
