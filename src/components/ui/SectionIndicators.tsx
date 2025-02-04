@@ -6,7 +6,7 @@ import useSectionScroll from "@/hooks/useSectionScroll";
 import { gotoSection } from "@/lib/utils";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 
 export default function SectionIndicators() {
   const heroReady = useAnimationReadyStore((state) => state.heroReady);
@@ -62,10 +62,7 @@ export default function SectionIndicators() {
     introAnimation.current = true;
   }, [heroReady, currentSection]);
 
-  const theme = useMemo(
-    () => sectionColorMap[currentSection],
-    [currentSection]
-  );
+  const theme = sectionColorMap[currentSection];
 
   return (
     <div className="fixed text-white z-50 top-[65vh] left-[100%] -translate-x-[100%] pr-xs sm:pr-sm lg:pr-lg 2xl:pr-2xl">

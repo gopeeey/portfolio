@@ -2,10 +2,9 @@
 
 import useSectionScroll from "@/hooks/useSectionScroll";
 import { Color, SectionName } from "@/types";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../icons/LogoIcon";
 import Menu from "./Menu";
 
@@ -18,28 +17,32 @@ export default function Navbar() {
     end: "bottom 9%",
   });
 
-  useGSAP(() => {
-    const sectionColors: { [key in SectionName]: string } = {
-      hero: "transparent",
-      experience: "var(--foreground)",
-      skills: "transparent",
-      projects: "var(--background)",
-      contact: "var(--foreground)",
-    };
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const sectionColors: { [key in SectionName]: string } = {
+        hero: "transparent",
+        experience: "var(--foreground)",
+        skills: "transparent",
+        projects: "var(--background)",
+        contact: "var(--foreground)",
+      };
 
-    const themes: { [key: string]: Color } = {
-      transparent: "dark",
-      "var(--foreground)": "light",
-      "var(--background)": "dark",
-    };
+      const themes: { [key: string]: Color } = {
+        transparent: "dark",
+        "var(--foreground)": "light",
+        "var(--background)": "dark",
+      };
 
-    const currentColor = sectionColors[activeSection];
+      const currentColor = sectionColors[activeSection];
 
-    gsap.to("#nav-bar", {
-      background: currentColor,
-      onStart: () => setColor(themes[currentColor]),
-      duration: 0.2,
+      gsap.to("#nav-bar", {
+        background: currentColor,
+        onStart: () => setColor(themes[currentColor]),
+        duration: 0.2,
+      });
     });
+
+    return () => ctx.revert();
   }, [activeSection]);
 
   const altColor: Color = color === "light" ? "dark" : "light";
@@ -48,7 +51,9 @@ export default function Navbar() {
       className={`flex fixed z-[40] w-full justify-between items-center m-0 px-xs py-6 sm:px-sm lg:px-lg 2xl:px-2xl lg:py-7 bg-transparent`}
       id="nav-bar"
     >
-      <Logo color={altColor} />
+      <a href="#hero">
+        <Logo color={altColor} />
+      </a>
 
       <Menu color={altColor} />
     </nav>

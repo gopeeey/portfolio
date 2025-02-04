@@ -92,7 +92,6 @@ export default function Contact() {
         sectionId={sectionId}
         header="Say hello!"
         subheader="Let's make some magic"
-        marginTop={0}
         animationDelay={0}
       />
 

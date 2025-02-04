@@ -104,6 +104,7 @@ export default function Experience() {
         header="Experience"
         subheader="Where Skills Meet Story"
         animationDelay={1.5}
+        className="mt-[30rem]"
       />
 
       <div className="mt-[35rem]">

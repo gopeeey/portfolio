@@ -1,9 +1,8 @@
 "use client";
 
 import { Color } from "@/types";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import * as React from "react";
+import { useEffect } from "react";
 import { colorMap } from "./constants";
 
 interface Props extends React.SVGProps<SVGSVGElement> {
@@ -14,14 +13,18 @@ const circleClassName = "circle";
 const lineClassName = "line";
 
 export default function LogoIcon({ color = "light", ...props }: Props) {
-  useGSAP(() => {
-    gsap.to(`.${circleClassName}`, {
-      stroke: colorMap[color],
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(`.${circleClassName}`, {
+        stroke: colorMap[color],
+      });
+
+      gsap.to(`.${lineClassName}`, {
+        fill: colorMap[color],
+      });
     });
 
-    gsap.to(`.${lineClassName}`, {
-      fill: colorMap[color],
-    });
+    return () => ctx.revert();
   }, [color]);
 
   return (

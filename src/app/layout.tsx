@@ -20,7 +20,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Samuel Gopeh | Full Stack Developer",
   description:
-    "I just really enjoy creating beautiful and performant software.",
+    "Samuel Gopeh is a full stack developer who is passionate about building high-quality and efficient software.",
 };
 
 export default function RootLayout({

@@ -24,7 +24,6 @@ export default function Projects() {
         subheader="My Creative Playground"
         animationDelay={0}
         variant="white"
-        marginTop={0}
       />
 
       <div
