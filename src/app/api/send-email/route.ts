@@ -43,9 +43,11 @@ async function sendEmail(data: EmailData) {
   });
 
   await transport.sendMail({
-    from: `"${data.name}" <${data.email}>`,
+    from: `${data.name} ${data.email}`,
     to: process.env.EMAIL_RECIPIENT,
     subject: "New Message from Your Portfolio",
-    text: data.message,
+    text: `${data.message}
+    
+           From: ${data.name} <${data.email}>`,
   });
 }

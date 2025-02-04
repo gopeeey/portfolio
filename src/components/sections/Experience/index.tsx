@@ -4,10 +4,9 @@ import { Props as BlackPlanetProps } from "@/components/BlackPlanet";
 import SectionTitle from "@/components/SectionTitle";
 import Section from "@/components/ui/Section";
 import { roles } from "@/lib/cvData";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RoleCard from "./RoleCard";
 import ExperienceScene from "./Scene";
 
@@ -24,7 +23,7 @@ export default function Experience() {
   const [planet, setPlanet] = useState<Planet | null>(null);
   const [planetGroup, setPlanetGroup] = useState<PlanetGroup | null>(null);
 
-  useGSAP(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       if (!planetGroup || !planet) return;
 
@@ -89,7 +88,7 @@ export default function Experience() {
     });
 
     return () => ctx.revert();
-  }, [planetGroup]);
+  }, [planetGroup, planet]);
 
   return (
     <Section id={sectionId}>

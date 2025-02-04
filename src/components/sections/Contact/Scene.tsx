@@ -75,11 +75,11 @@ export default function ContactScene() {
         >
           <Rocket currentAnimation={currentAnimation} />
           <group position={[11, 3, 0]}>
-            <Float>
+            <Float speed={2}>
               <BlackPlanet position={[0, 0, 0]} scale={2.5} />
             </Float>
 
-            <Float>
+            <Float speed={2}>
               <WhitePlanet position={[-2, -2, 2]} scale={1} />
             </Float>
           </group>

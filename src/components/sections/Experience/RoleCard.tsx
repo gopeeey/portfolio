@@ -25,13 +25,13 @@ export default function RoleCard({ role, className }: Props) {
       </div>
 
       <div className={`role_details_${role.id} translate-y-[4em] opacity-0`}>
-        <div className="flex items-center mt-8">
+        <a className="flex items-center mt-8" href={role.link} target="_blank">
           <role.companyLogo />
           <span className="ml-3 mr-6 text-lg">{role.companyName}</span>
           <span className="cursor-pointer">
             <ExternalLinkIcon />
           </span>
-        </div>
+        </a>
 
         <div className="mt-8 md:max-w-[60%] xl:max-w-[40%]">
           <p>{role.summary}</p>

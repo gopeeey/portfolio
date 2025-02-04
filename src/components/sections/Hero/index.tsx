@@ -2,33 +2,37 @@
 
 import Section from "@/components/ui/Section";
 import { useAnimationReadyStore } from "@/hooks/useAnimationReadyStore";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useEffect } from "react";
 import HeroScene from "./Scene";
 
 export default function Hero() {
   const ready = useAnimationReadyStore((store) => store.heroReady);
 
-  useGSAP(() => {
-    if (!ready) return;
-    const tl = gsap.timeline({ defaults: { duration: 1, delay: 3 } });
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (!ready) return;
+      const tl = gsap.timeline({ defaults: { duration: 1, delay: 3 } });
 
-    tl.to(".nameLetter", {
-      opacity: 1,
-      scale: 1,
-      stagger: 0.1,
-      ease: "back.out(3)",
+      tl.to(".nameLetter", {
+        opacity: 1,
+        scale: 1,
+        stagger: 0.1,
+        ease: "back.out(3)",
+      });
+
+      tl.to(
+        ".paragraph",
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.4,
+        },
+        1
+      );
     });
 
-    tl.to(
-      ".paragraph",
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.4,
-      },
-      1
-    );
+    return () => ctx.revert();
   }, [ready]);
 
   return (

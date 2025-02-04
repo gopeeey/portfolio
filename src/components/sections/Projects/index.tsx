@@ -2,6 +2,7 @@
 
 import SectionTitle from "@/components/SectionTitle";
 import Section from "@/components/ui/Section";
+import { projects } from "@/lib/cvData";
 import ProjectCard from "./ProjectCard";
 import ProjectsScene from "./Scene";
 
@@ -30,12 +31,9 @@ export default function Projects() {
         className="relative z-30 mt-[34rem] md:mt-[40rem] md:grid md:grid-cols-2 2xl:grid-cols-3 gap-14"
         id="projects_list_container"
       >
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+        {projects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
       </div>
     </Section>
   );

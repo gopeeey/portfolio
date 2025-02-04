@@ -3,6 +3,7 @@
 import { sectionColorMap, sections } from "@/constants";
 import { useAnimationReadyStore } from "@/hooks/useAnimationReadyStore";
 import useSectionScroll from "@/hooks/useSectionScroll";
+import { gotoSection } from "@/lib/utils";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useMemo, useRef } from "react";
@@ -88,11 +89,7 @@ export default function SectionIndicators() {
               2 * 1.125 * index
             }rem) rotate(45deg) scale(0)`,
           }}
-          onClick={() => {
-            const target = document.getElementById(section);
-            if (target)
-              target.scrollIntoView({ behavior: "smooth", block: "nearest" });
-          }}
+          onClick={() => gotoSection(section, "auto")}
         ></button>
       ))}
     </div>

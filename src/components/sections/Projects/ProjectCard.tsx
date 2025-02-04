@@ -1,47 +1,52 @@
 import ExternalLinkIcon from "@/components/icons/ExternalLinkIcon";
+import GithubIcon from "@/components/icons/GithubIcon";
+import NpmIcon from "@/components/icons/NpmIcon";
 import Chip from "@/components/ui/Chip";
+import { Project } from "@/types";
 import Image from "next/image";
 
-export default function ProjectCard() {
+type Props = {
+  project: Project;
+};
+
+export default function ProjectCard({ project }: Props) {
   return (
     <div className="text-lighter_grey mb-[10rem] project_card ">
-      <a href="https://google.com" target="__blank">
-        <div className="overflow-hidden rounded-2xl border-[1.6px] border-foreground">
-          <Image
-            src={"/images/codewatch_screenshot.png"}
-            alt="Codewatch screenshot"
-            width={2520}
-            height={1333}
-          />
-        </div>
-      </a>
+      <div className="overflow-hidden rounded-2xl border-[1.6px] border-foreground">
+        <Image
+          src={project.img}
+          alt={`${project.title} screenshot`}
+          width={2520}
+          height={1333}
+        />
+      </div>
 
-      <a
-        href="https://google.com"
-        target="__blank"
-        className="flex items-center w-min"
-      >
-        <h4 className="text-xl mt-8 text-gray-300 font-medium">Codewatch</h4>
-        <span className="-mb-7 ml-4">
-          <ExternalLinkIcon stroke="var(--foreground)" />
-        </span>
-      </a>
+      <div className="flex items-center w-fit">
+        <h4 className="text-xl mt-8 text-gray-300 font-medium">
+          {project.title}
+        </h4>
 
-      <p className="mt-6 leading-[1.6rem] w-[96%]">
-        A free and open source error logging and monitoring system for Node.js
-        applications. It helps developers track errors and exceptions, making it
-        easier to identify and fix issues.
-      </p>
+        <a className="-mb-7 ml-5" href={project.github} target="_blank">
+          <GithubIcon />
+        </a>
+
+        {project.npm ? (
+          <a className="-mb-7 ml-5" href={project.npm} target="_blank">
+            <NpmIcon />
+          </a>
+        ) : null}
+
+        {project.demo ? (
+          <a className="-mb-7 ml-5" href={project.demo} target="_blank">
+            <ExternalLinkIcon stroke="var(--foreground)" />
+          </a>
+        ) : null}
+      </div>
+
+      <p className="mt-6 leading-[1.6rem] w-[96%]">{project.description}</p>
 
       <div className="mt-8">
-        {[
-          "Typescript",
-          "Node.js",
-          "PostgreSQL",
-          "Jest",
-          "ExpressJS",
-          "NestJS",
-        ].map((skill) => (
+        {project.technologies.map((skill) => (
           <Chip key={skill} variant="outlined">
             {skill}
           </Chip>
