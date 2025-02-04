@@ -1,3 +1,5 @@
+"use client";
+
 import { sections } from "@/constants";
 import { gotoSection } from "@/lib/utils";
 import { Color, SectionName } from "@/types";
@@ -10,12 +12,19 @@ type Props = {
 
 export default function Menu({ color }: Props) {
   const [open, setOpen] = useState(false);
-  const { bgStyle, oppBgStyle } = useMemo(() => {
-    const bgStyle = color === "dark" ? "background" : "foreground";
-    const oppBgStyle = color !== "dark" ? "background" : "foreground";
 
-    return { bgStyle, oppBgStyle };
-  }, [color]);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const elem = document.getElementById("menu_root");
+      if (elem && open && !elem.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("mousedown", handleClickOutside);
+
+    return () => window.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
 
   useEffect(() => {
     const duration = 0.4;
@@ -105,7 +114,17 @@ export default function Menu({ color }: Props) {
     });
 
     return () => ctx.kill();
-  }, [open, bgStyle, oppBgStyle]);
+  }, [open]);
+
+  const { bgStyle, oppBgStyle, borderStyle, textStyle } = useMemo(() => {
+    const bgStyle = color === "dark" ? "bg-background" : "bg-foreground";
+    const oppBgStyle = color !== "dark" ? "bg-background" : "bg-foreground";
+    const borderStyle =
+      color === "dark" ? "border-background" : "border-foreground";
+    const textStyle = color !== "dark" ? "text-background" : "text-foreground";
+
+    return { bgStyle, oppBgStyle, borderStyle, textStyle };
+  }, [color]);
 
   const handleClick = (section: SectionName) => {
     gotoSection(section, "instant");
@@ -113,34 +132,32 @@ export default function Menu({ color }: Props) {
   };
 
   return (
-    <div className="relative">
+    <div className="relative" id="menu_root">
       <div
-        className="flex flex-col items-end cursor-pointer relative z-40"
+        className="flex flex-col items-end cursor-pointer relative z-40 h-6 mt-3"
         onClick={() => setOpen((prev) => !prev)}
       >
         <div
-          className={`line1 w-9 menu_line bg-${open ? oppBgStyle : bgStyle}`}
+          className={`line1 w-9 menu_line ${open ? oppBgStyle : bgStyle}`}
           id="menu_line_1"
-        ></div>
+        />
         <div
-          className={`line2 w-6 menu_line mt-2 bg-${
-            open ? oppBgStyle : bgStyle
-          }`}
+          className={`line2 w-6 menu_line mt-2 ${open ? oppBgStyle : bgStyle}`}
           id="menu_line_2"
-        ></div>
+        />
       </div>
 
       <div
         className={`absolute bg-transparent border-[1px] z-30
-            border-solid border-${bgStyle} 
-            -top-[220%] -right-7 rounded-xl
-            p-2 text-${oppBgStyle} scale-0 opacity-0 origin-top-right`}
+            border-solid ${borderStyle} 
+            -top-[40%] -right-7 rounded-xl
+            p-2 ${textStyle} scale-0 opacity-0 origin-top-right`}
         id="menu_pane"
       >
         <div className={`w-64 px-0`}>
           <ul>
             <li
-              className={`h-20 bg-${bgStyle} rounded-t-lg menu_item translate-y-10 opacity-0`}
+              className={`h-20 ${bgStyle} rounded-t-lg menu_item translate-y-10 opacity-0`}
             ></li>
             {sections.map((section) => (
               <li
@@ -153,13 +170,13 @@ export default function Menu({ color }: Props) {
                     translate-y-10
                     `}
               >
-                <span className={`inline-block px-5 py-3 bg-${bgStyle} w-full`}>
+                <span className={`inline-block px-5 py-3 ${bgStyle} w-full`}>
                   {section === "hero" ? "home" : section}
                 </span>
               </li>
             ))}
             <li
-              className={`h-10 bg-${bgStyle} rounded-b-lg menu_item translate-y-10 opacity-0`}
+              className={`h-10 ${bgStyle} rounded-b-lg menu_item translate-y-10 opacity-0`}
             ></li>
           </ul>
         </div>

@@ -16,6 +16,16 @@ export type Role = {
   companyLogo: () => React.ReactElement;
   summary: string;
   skills: string[];
+  link: string;
+};
+
+export type Project = {
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+  link: string;
+  img: string;
 };
 
 export type Social = {
