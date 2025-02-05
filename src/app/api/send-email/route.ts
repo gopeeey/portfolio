@@ -36,16 +36,22 @@ export async function POST(req: Request) {
 async function sendEmail(data: EmailData) {
   console.log(
     "NODEMAILER_TRANSPORT_SERVICE",
-    process.env.NODEMAILER_TRANSPORT_SERVICE
+    process.env.NODEMAILER_TRANSPORT_SERVICE,
+    process.env.NODEMAILER_SMTP_USER,
+    process.env.NODEMAILER_SMTP_PASSWORD
   );
+  const isDev = process.env.NODE_ENV === "development";
   const transport = nodemailer.createTransport({
     service: process.env.NODEMAILER_TRANSPORT_SERVICE,
+    secure: isDev ? false : true,
+    port: isDev ? 587 : 465,
     auth: {
       user: process.env.NODEMAILER_SMTP_USER,
       pass: process.env.NODEMAILER_SMTP_PASSWORD,
     },
   });
 
+  console.log("Sending email to", process.env.EMAIL_RECIPIENT);
   await transport.sendMail({
     from: `${data.name} ${data.email}`,
     to: process.env.EMAIL_RECIPIENT,
@@ -54,4 +60,5 @@ async function sendEmail(data: EmailData) {
     
            From: ${data.name} <${data.email}>`,
   });
+  console.log("Email sent successfully");
 }
