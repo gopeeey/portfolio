@@ -42,7 +42,7 @@ async function sendEmail(data: EmailData) {
   );
   const isDev = process.env.NODE_ENV === "development";
   const transport = nodemailer.createTransport({
-    service: process.env.NODEMAILER_TRANSPORT_SERVICE,
+    host: "smtp.gmail.com",
     secure: isDev ? false : true,
     port: isDev ? 587 : 465,
     auth: {
