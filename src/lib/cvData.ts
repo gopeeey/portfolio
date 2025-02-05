@@ -172,7 +172,7 @@ export const projects: Project[] = [
     id: 7,
     title: "ASCII Me",
     description:
-      "Just a fun page that renders pictures, videos and camera input using ASCII characters",
+      "Just a fun page that renders pictures and camera feed using ASCII characters",
     technologies: ["JavaScript", "HTML", "CSS"],
     github: "https://github.com/gopeeey/ascii-me",
     demo: "https://asciime.gopeh.com/",
