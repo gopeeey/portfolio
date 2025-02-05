@@ -34,6 +34,10 @@ export async function POST(req: Request) {
 }
 
 async function sendEmail(data: EmailData) {
+  console.log(
+    "NODEMAILER_TRANSPORT_SERVICE",
+    process.env.NODEMAILER_TRANSPORT_SERVICE
+  );
   const transport = nodemailer.createTransport({
     service: process.env.NODEMAILER_TRANSPORT_SERVICE,
     auth: {
