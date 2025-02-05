@@ -28,7 +28,7 @@ export function gotoSection(
     case "hero":
       break;
     case "experience":
-      offset += 860;
+      offset += 1200;
       break;
     case "skills":
       offset += 10;

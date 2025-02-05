@@ -11,7 +11,7 @@ type Props = {
 };
 
 const MAX_COOL_DOWN = 8;
-const MIN_COOL_DOWN = 3;
+const MIN_COOL_DOWN = 2;
 
 export function Person({ camera }: Props) {
   const group = useRef<THREE.Group<THREE.Object3DEventMap>>(null);

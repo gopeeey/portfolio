@@ -1,10 +1,9 @@
 "use client";
 
 import { useAnimationReadyStore } from "@/hooks/useAnimationReadyStore";
-import { useGSAP } from "@gsap/react";
 import { PerspectiveCamera, View } from "@react-three/drei";
 import gsap from "gsap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as THREE from "three";
 import { Person } from "./Person";
 import { Planets } from "./Planets";
@@ -17,22 +16,28 @@ export default function HeroScene() {
     useState<THREE.Group<THREE.Object3DEventMap> | null>(null);
   const setReady = useAnimationReadyStore((store) => store.setHeroReady);
 
-  useGSAP(() => {
-    if (!objectGroup || !camera) return;
-    setReady();
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (!objectGroup || !camera) return;
+      setReady();
 
-    const tl = gsap.timeline({ defaults: { duration: 4, ease: "power3.out" } });
+      const tl = gsap.timeline({
+        defaults: { duration: 4, ease: "power3.out" },
+      });
 
-    tl.set(objectGroup.rotation, { y: Math.PI });
-    tl.set(camera.rotation, { x: -Math.PI / 14 });
-    tl.set(camera.position, { y: 7, z: 60 });
+      tl.set(objectGroup.rotation, { y: Math.PI });
+      tl.set(camera.rotation, { x: -Math.PI / 14 });
+      tl.set(camera.position, { y: 7, z: 60 });
 
-    tl.to(objectGroup.rotation, { x: 0, y: 0, z: 0 }, 0);
+      tl.to(objectGroup.rotation, { x: 0, y: 0, z: 0 }, 0);
 
-    tl.to(camera.position, { y: 1, z: 20 }, 0);
+      tl.to(camera.position, { y: 1, z: 20 }, 0);
 
-    tl.to(camera.rotation, { x: Math.PI / 19 }, 0);
-  }, [objectGroup]);
+      tl.to(camera.rotation, { x: Math.PI / 19 }, 0);
+    });
+
+    return () => ctx.revert();
+  }, [objectGroup, camera, setReady]);
 
   return (
     <View

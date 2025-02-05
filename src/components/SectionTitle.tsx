@@ -8,18 +8,18 @@ type Props = {
   sectionId: string;
   header: string;
   subheader: string;
-  marginTop?: number;
   animationDelay?: number;
   variant?: "white" | "black";
+  className?: string;
 };
 
 export default function SectionTitle({
   sectionId,
   header,
   subheader,
-  marginTop = 60,
   animationDelay = 2.3,
   variant = "black",
+  className,
 }: Props) {
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -62,7 +62,7 @@ export default function SectionTitle({
 
   return (
     <div
-      className={`h-[100vh] relative mt-[${marginTop}rem]`}
+      className={`h-[100vh] relative ${className}`}
       id={`${sectionId}_title_root`}
     >
       <div

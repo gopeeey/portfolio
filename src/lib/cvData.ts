@@ -35,7 +35,7 @@ export const roles: Role[] = [
     companyLogo: BlendingBytesLogo,
     duration: "2023 - 2024",
     summary:
-      "Enhanced user experience by implementing a faceted search backend for a used cars marketplace. Optimized database performance to reduce costs, and improved developer experience through detailed backend architecture insights.",
+      "Implemented a faceted search backend for a used cars marketplace. Optimized database performance to reduce costs, and improved developer experience through detailed backend architecture insights.",
     skills: ["TypeScript", "Node.js", "MongoDB"],
     link: "https://www.blendingbytes.com/",
   },
@@ -46,7 +46,7 @@ export const roles: Role[] = [
     companyLogo: HeyfoodLogo,
     duration: "2021 - 2023",
     summary:
-      "Improved delivery speed by 20% by automating order batching and payouts, making the process more efficient for vendors and drivers. Helped drive growth by rapidly iterating on features to support growth hacks. Built a real-time monitoring dashboard that improved customer support response times and streamlined grocery vendor onboarding, cutting the process by 50%. Enhanced operational efficiency with better system insights and reduced database costs by 65% by migrating from MongoDB to PostgreSQL.",
+      "Improved delivery speed by 27% by automating driver-order assignments and batching. Helped drive growth by rapidly iterating on features to support growth hacks. Built a real-time monitoring dashboard that improved customer support response times, and a dashboard to streamline grocery vendor onboarding, cutting the onboarding time by 50%. Reduced database costs by 65% by migrating from MongoDB to PostgreSQL.",
     skills: [
       "JavaScript",
       "TypeScript",
@@ -172,7 +172,7 @@ export const projects: Project[] = [
     id: 7,
     title: "ASCII Me",
     description:
-      "Just a fun page that renders pictures, videos and camera input using ASCII characters",
+      "Just a fun page that renders pictures and camera feed using ASCII characters",
     technologies: ["JavaScript", "HTML", "CSS"],
     github: "https://github.com/gopeeey/ascii-me",
     demo: "https://asciime.gopeh.com/",
