@@ -14,12 +14,11 @@ export default function HeroScene() {
   const [camera, setCamera] = useState<THREE.PerspectiveCamera | null>(null);
   const [objectGroup, setObjectGroup] =
     useState<THREE.Group<THREE.Object3DEventMap> | null>(null);
-  const setReady = useAnimationReadyStore((store) => store.setHeroReady);
+  const heroReady = useAnimationReadyStore((store) => store.heroReady);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      if (!objectGroup || !camera) return;
-      setReady();
+      if (!objectGroup || !camera || !heroReady) return;
 
       const tl = gsap.timeline({
         defaults: { duration: 4, ease: "power3.out" },
@@ -27,7 +26,7 @@ export default function HeroScene() {
 
       tl.set(objectGroup.rotation, { y: Math.PI });
       tl.set(camera.rotation, { x: -Math.PI / 14 });
-      tl.set(camera.position, { y: 7, z: 60 });
+      tl.set(camera.position, { y: 81, z: 100 });
 
       tl.to(objectGroup.rotation, { x: 0, y: 0, z: 0 }, 0);
 
@@ -37,7 +36,7 @@ export default function HeroScene() {
     });
 
     return () => ctx.revert();
-  }, [objectGroup, camera, setReady]);
+  }, [objectGroup, camera, heroReady]);
 
   return (
     <View

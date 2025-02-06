@@ -1,5 +1,4 @@
 import { EmailData } from "@/types";
-import nodemailer from "nodemailer";
 
 class ValidationError extends Error {}
 
@@ -16,7 +15,7 @@ export async function POST(req: Request) {
     if (!body.message || !body.message.length)
       throw new ValidationError("Invalid message");
 
-    await sendEmail(body);
+    await sendEmailMailerSend(body);
   } catch (err) {
     if (err instanceof ValidationError) {
       return Response.json({ message: err.message }, { status: 400 });
@@ -33,26 +32,34 @@ export async function POST(req: Request) {
   return Response.json({ message: "OK" });
 }
 
-async function sendEmail(data: EmailData) {
-  const transport = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    secure: false,
-    port: 587,
-    requireTLS: true,
-    auth: {
-      user: process.env.NODEMAILER_SMTP_USER,
-      pass: process.env.NODEMAILER_SMTP_PASSWORD,
-    },
-  });
+async function sendEmailMailerSend(data: EmailData) {
+  const url = "https://api.mailersend.com/v1/email";
+  const auth = `Bearer ${process.env.MAILERSEND_API_KEY}`;
 
-  console.log("Sending email to", process.env.EMAIL_RECIPIENT);
-  await transport.sendMail({
-    from: `${data.name} ${data.email}`,
-    to: process.env.EMAIL_RECIPIENT,
-    subject: "New Message from Your Portfolio",
+  const body = {
+    from: {
+      email: process.env.MAILERSEND_DOMAIN_EMAIL,
+      name: data.name,
+    },
+    to: [
+      {
+        email: process.env.EMAIL_RECIPIENT,
+        name: "Samuel Gopeh",
+      },
+    ],
+    subject: "Message from your portfolio",
     text: `${data.message}
     
-           From: ${data.name} <${data.email}>`,
+         From: ${data.name} <${data.email}>`,
+  };
+
+  const res = await fetch(url, {
+    body: JSON.stringify(body),
+    method: "POST",
+    headers: { Authorization: auth, "Content-Type": "application/json" },
   });
-  console.log("Email sent successfully");
+  if (!res.ok) {
+    console.log("Failed to send email, the res:", res);
+    throw new Error(`Error sending email`);
+  }
 }

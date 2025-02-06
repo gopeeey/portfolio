@@ -2,20 +2,23 @@
 
 import { WhitePlanet } from "@/components/WhitePlanet";
 import { scaleNumber } from "@/lib/utils";
+import { CurrentContactAnimation } from "@/types";
 import { Float, PerspectiveCamera, View } from "@react-three/drei";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import * as THREE from "three";
 import { BlackPlanet } from "../../BlackPlanet";
 import { Rocket } from "./Rocket";
-import { CurrentAnimationContext } from "./contexts";
 
-export default function ContactScene() {
+type Props = {
+  currentAnimation: CurrentContactAnimation;
+};
+
+export default function ContactScene({ currentAnimation }: Props) {
   const [scene, setScene] = useState<THREE.Group | null>(null);
   const [width, setWidth] = useState<number>(0);
   const [height, setHeight] = useState<number>(0);
-  const currentAnimation = useContext(CurrentAnimationContext);
 
   useEffect(() => {
     const ctx = gsap.context(() => {

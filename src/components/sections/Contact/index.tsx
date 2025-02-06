@@ -8,7 +8,6 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import ContactScene from "./Scene";
 import TextInput from "./TextInput";
-import { CurrentAnimationContext } from "./contexts";
 
 const sectionId = "contact";
 export default function Contact() {
@@ -83,9 +82,7 @@ export default function Contact() {
   return (
     <Section id={sectionId} className="pb-36 2xl:pb-[16rem] min-h-[220vh] z-30">
       <div className="absolute w-full top-0 left-0 overflow-x-hidden">
-        <CurrentAnimationContext.Provider value={currentAnimation}>
-          <ContactScene />
-        </CurrentAnimationContext.Provider>
+        <ContactScene currentAnimation={loading ? "hover" : currentAnimation} />
       </div>
 
       <SectionTitle

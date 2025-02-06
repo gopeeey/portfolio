@@ -17,6 +17,8 @@ export default function SectionIndicators() {
   const introAnimation = useRef<boolean | null>(false);
 
   useGSAP(() => {
+    if (window.innerWidth < 768) return;
+
     const isHero = currentSection === "hero";
     if (isHero && !heroReady) return;
 
@@ -65,7 +67,7 @@ export default function SectionIndicators() {
   const theme = sectionColorMap[currentSection];
 
   return (
-    <div className="fixed text-white z-50 top-[65vh] left-[100%] -translate-x-[100%] pr-xs sm:pr-sm lg:pr-lg 2xl:pr-2xl">
+    <div className="fixed hidden sm:block text-white z-50 top-[65vh] left-[100%] -translate-x-[100%] pr-xs sm:pr-sm lg:pr-lg 2xl:pr-2xl">
       {sections.map((section, index) => (
         <button
           key={section}
