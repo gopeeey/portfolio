@@ -35,7 +35,6 @@ export default function Loader() {
         scale: 50,
         opacity: 0,
         duration: 2,
-        // onStart: () => setReady(),
       });
 
       tl.to(

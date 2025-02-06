@@ -16,7 +16,6 @@ export async function POST(req: Request) {
       throw new ValidationError("Invalid message");
 
     await sendEmailMailerSend(body);
-    console.log("Gets here");
   } catch (err) {
     if (err instanceof ValidationError) {
       return Response.json({ message: err.message }, { status: 400 });
