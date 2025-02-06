@@ -1,3 +1,4 @@
+import Loader from "@/components/Loader";
 import Footer from "@/components/ui/Footer";
 import Navbar from "@/components/ui/Navbar";
 import SectionIndicators from "@/components/ui/SectionIndicators";
@@ -35,6 +36,7 @@ export default function RootLayout({
       >
         <Navbar />
         <SectionIndicators />
+        <Loader />
         <ToastContainer
           position="top-right"
           autoClose={4000}

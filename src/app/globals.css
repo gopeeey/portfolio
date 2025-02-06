@@ -58,3 +58,69 @@ body::-webkit-scrollbar-thumb {
   height: 2px;
   transition: all 0.1s;
 }
+
+@keyframes shake {
+  0% {
+    top: 0;
+    left: 0;
+  }
+  10% {
+    top: 3.5%;
+    left: 3.5%;
+  }
+  20% {
+    top: 0;
+    left: 2%;
+  }
+  30% {
+    top: 0%;
+    left: 1%;
+  }
+  40% {
+    top: 1%;
+    left: 3.5%;
+  }
+  50% {
+    top: 3.5%;
+    left: 0;
+  }
+  60% {
+    top: 0%;
+    left: 3.5%;
+  }
+  70% {
+    top: 0;
+    left: 0;
+  }
+  80% {
+    top: 3.5%;
+    left: 0;
+  }
+  90% {
+    top: 3.5%;
+    left: 2%;
+  }
+  100% {
+    top: 3.5%;
+    left: 3.5%;
+  }
+  /* 0%   {top: 0; left: 0;}
+  0%   {top: 0; left: 0;}
+  0%   {top: 0; left: 0;}
+  0%   {top: 0; left: 0;}
+  0%   {top: 0; left: 0;}
+  25%  {top: 0; left: 0;}
+  50%  {top: 0; left: 0;}
+  100% {top: 0; left: 0;} */
+}
+
+#loader_black_ball {
+  animation-name: shake;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+#loader_white_ball {
+  box-shadow: 0px 0px 7px 1px var(--foreground);
+}

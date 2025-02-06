@@ -1,9 +1,8 @@
 "use client";
 
-import { Loader, View } from "@react-three/drei";
+import { View } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
-import NoSSRWrapper from "./NoSSRWrapper";
 
 export default function MyCanvas() {
   return (
@@ -24,10 +23,6 @@ export default function MyCanvas() {
           <View.Port />
         </Suspense>
       </Canvas>
-
-      <NoSSRWrapper>
-        <Loader />
-      </NoSSRWrapper>
     </>
   );
 }
