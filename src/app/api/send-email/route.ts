@@ -1,4 +1,5 @@
 import { EmailData } from "@/types";
+import axios from "axios";
 
 class ValidationError extends Error {}
 
@@ -34,7 +35,7 @@ export async function POST(req: Request) {
 
 async function sendEmailMailerSend(data: EmailData) {
   const url = "https://api.mailersend.com/v1/email";
-  const auth = `Bearer ${process.env.MAILERSEND_API_KEY}`;
+  const Authorization = `Bearer ${process.env.MAILERSEND_API_KEY}`;
 
   const body = {
     from: {
@@ -53,12 +54,11 @@ async function sendEmailMailerSend(data: EmailData) {
          From: ${data.name} <${data.email}>`,
   };
 
-  const res = await fetch(url, {
-    body: JSON.stringify(body),
-    method: "POST",
-    headers: { Authorization: auth, "Content-Type": "application/json" },
+  const res = await axios.post(url, body, {
+    headers: { Authorization, "Content-Type": "application/json" },
   });
-  if (!res.ok) {
+
+  if (!res.status.toString().startsWith("2")) {
     console.log("Failed to send email, the res:", res);
     throw new Error(`Error sending email`);
   }
