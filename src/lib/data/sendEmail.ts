@@ -1,4 +1,5 @@
 import { EmailData } from "@/types";
+import axios from "axios";
 import validator from "validator";
 
 class CustomError extends Error {}
@@ -13,12 +14,34 @@ export async function sendEmail({ name, email, message }: EmailData) {
     if (!message || !message.length)
       throw new CustomError("Please enter a message");
 
-    const res = await fetch("/api/send-email", {
-      method: "POST",
-      body: JSON.stringify({ name, email, message }),
+    const url = "https://api.mailersend.com/v1/email";
+    const Authorization = `Bearer ${process.env.MAILERSEND_API_KEY}`;
+
+    const body = {
+      from: {
+        email: process.env.MAILERSEND_DOMAIN_EMAIL,
+        name,
+      },
+      to: [
+        {
+          email: process.env.EMAIL_RECIPIENT,
+          name: "Samuel Gopeh",
+        },
+      ],
+      subject: "Message from your portfolio",
+      text: `${message}
+    
+         From: ${name} <${email}>`,
+    };
+
+    const res = await axios.post(url, body, {
+      headers: { Authorization, "Content-Type": "application/json" },
     });
-    const body = (await res.json()) as { message: string };
-    if (!res.ok) throw new CustomError(body.message);
+
+    if (!res.status.toString().startsWith("2")) {
+      console.log("Failed to send email, the res:", res);
+      throw new CustomError(`Error sending email`);
+    }
   } catch (err) {
     if (err instanceof CustomError) throw err;
     if (err instanceof Error)
