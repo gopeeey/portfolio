@@ -2,9 +2,33 @@
 
 import { View } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Suspense, useEffect, useRef } from "react";
 
 export default function MyCanvas() {
+  const docHeightRef = useRef(0);
+  useEffect(() => {
+    ScrollTrigger.config({
+      limitCallbacks: true,
+      ignoreMobileResize: true,
+      autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
+    });
+
+    docHeightRef.current = document.body.scrollHeight;
+
+    const handler = () => {
+      const scrollAmount = window.scrollY / docHeightRef.current;
+      docHeightRef.current = document.body.scrollHeight;
+      const scrollPos = scrollAmount * docHeightRef.current;
+
+      ScrollTrigger.refresh();
+      window.scrollTo({ top: scrollPos, behavior: "instant" });
+    };
+
+    window.addEventListener("resize", handler);
+
+    return () => window.removeEventListener("resize", handler);
+  });
   return (
     <>
       <Canvas
