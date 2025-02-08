@@ -18,10 +18,20 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
+const title = "Samuel Gopeh: Full Stack Developer";
+const description =
+  "Samuel Gopeh is a full stack developer who is passionate about building high-quality and efficient software.";
+
 export const metadata: Metadata = {
-  title: "Samuel Gopeh | Full Stack Developer",
-  description:
-    "Samuel Gopeh is a full stack developer who is passionate about building high-quality and efficient software.",
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: "https://www.gopeh.com",
+    type: "website",
+    images: ["https://www.gopeh.com/images/portfolio_screenshot.png"],
+  },
 };
 
 export default function RootLayout({
