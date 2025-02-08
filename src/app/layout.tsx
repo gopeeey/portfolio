@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description,
     url: "https://www.gopeh.com",
     type: "website",
-    images: ["https://www.gopeh.com/images/portfolio_screenshot.png"],
+    images: ["https://www.gopeh.com/images/opengraph-image.png"],
   },
 };
 
