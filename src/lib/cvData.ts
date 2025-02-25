@@ -15,7 +15,7 @@ export const roles: Role[] = [
     companyLogo: TuringLogo,
     duration: "Apr - Nov 2024",
     summary:
-      "Optimized large language models (LLMs) through advanced training and fine-tuning techniques to enhance code-related task-specific performance and language comprehension.",
+      "Trained and fine-tuned LLMs to improve code-related task performance and language understanding. Reviewed code and data submitted by other trainers to ensure they met the team's standards. Mentored new trainers and provided guidance in helping them improve their performance. Assisted in creating/modifying code-related data annotation guidelines that were adhered to by the team.",
     skills: [
       "TypeScript",
       "JavaScript",
