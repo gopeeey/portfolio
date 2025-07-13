@@ -146,7 +146,7 @@ export const projects: Project[] = [
       "CSS",
     ],
     github: "https://github.com/gopeeey/satg",
-    demo: "https://satg.gopeh.com",
+    // demo: "https://satg.gopeh.com",
     img: "/images/satg_screenshot.png",
   },
   {
