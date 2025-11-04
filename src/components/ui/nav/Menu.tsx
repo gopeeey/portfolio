@@ -148,7 +148,7 @@ export default function Menu({ color }: Props) {
       </div>
 
       <div
-        className={`absolute bg-transparent border-[1px] z-30
+        className={`absolute bg-transparent border z-30
             border-solid ${borderStyle} 
             -top-[40%] -right-7 rounded-xl
             p-2 ${textStyle} scale-0 opacity-0 origin-top-right`}

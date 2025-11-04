@@ -18,7 +18,7 @@ export default function GithubIcon() {
         <g
           id="Dribbble-Light-Preview"
           transform="translate(-140.000000, -7559.000000)"
-          fill="var(--foreground)"
+          fill="rgb(var(--foreground))"
         >
           <g id="icons" transform="translate(56.000000, 160.000000)">
             <path

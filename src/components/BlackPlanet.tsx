@@ -30,7 +30,7 @@ export function BlackPlanet({
   return (
     <group
       dispose={null}
-      rotation={[0, 0, Math.PI / 9]}
+      rotation={[0, 0, 0]}
       position={position}
       scale={scale}
       ref={(node) => {

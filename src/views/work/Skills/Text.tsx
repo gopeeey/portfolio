@@ -36,7 +36,7 @@ const Text = forwardRef<THREE.Mesh, Props>(
     if (!textGeo) return <Html>{content}</Html>;
     return (
       <mesh geometry={textGeo} position={position} ref={ref}>
-        <meshLambertMaterial attach="material" color={0xffffff} />
+        <meshLambertMaterial attach="material" color={0x303030} />
       </mesh>
     );
   }

@@ -104,17 +104,17 @@ export default function Experience() {
         header="Experience"
         subheader="Where Skills Meet Story"
         animationDelay={1.5}
-        className="mt-[30rem]"
+        className="mt-120"
       />
 
-      <div className="mt-[35rem]">
+      <div className="mt-140">
         {roles.map((role) => (
           <div
             key={role.id}
-            className="sticky_container h-[150vh] mb-[40rem]"
+            className="sticky_container h-[150vh] mb-160"
             id={`role_container_${role.id}`}
           >
-            <RoleCard role={role} className="relative mb-[10rem] z-[30]" />
+            <RoleCard role={role} className="relative mb-40 z-30" />
           </div>
         ))}
       </div>

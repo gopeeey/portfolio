@@ -116,7 +116,7 @@ export default function SkillsScene() {
             if (cam) setCamera(cam);
           }}
         />
-        <Wormhole geometry={tubeGeo} camera={camera} />
+        <Wormhole geometry={tubeGeo} />
         <StarsSphere ref={starsRef} minRadius={4} maxRadius={10} count={3000} />
       </group>
       <fogExp2 attach={"fog"} color="black" density={0.12} />

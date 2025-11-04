@@ -4,34 +4,13 @@ import { randNumBtw, scaleNumber } from "@/lib/utils";
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 import { AWS } from "./skills_models/AWS";
-import { Azure } from "./skills_models/Azure";
-import { CSS } from "./skills_models/CSS";
-import { Docker } from "./skills_models/Docker";
-import { Express } from "./skills_models/Express";
-import { Firebase } from "./skills_models/Firebase";
-import { Git } from "./skills_models/Git";
-import { HTML } from "./skills_models/HTML";
-import { Javascript } from "./skills_models/Javascript";
-import { Jest } from "./skills_models/Jest";
-import { MaterialUI } from "./skills_models/MaterialUI";
-import { MongoDB } from "./skills_models/MongoDB";
-import { Next } from "./skills_models/Next";
-import { Node } from "./skills_models/Node";
-import { Postgres } from "./skills_models/Postgres";
-import { RabbitMQ } from "./skills_models/RabbitMQ";
-import { React } from "./skills_models/React";
-import { Redis } from "./skills_models/Redis";
-import { SocketIO } from "./skills_models/SocketIO";
-import { Tailwind } from "./skills_models/Tailwind";
-import { Typescript } from "./skills_models/Typescript";
 import Text from "./Text";
 
 type Props = {
   geometry: THREE.TubeGeometry;
-  camera: THREE.PerspectiveCamera | null;
 };
 
-export default function Wormhole({ geometry, camera }: Props) {
+export default function Wormhole({ geometry }: Props) {
   const { edgesGeo, edgesMat } = useMemo(() => {
     const edgesGeo = new THREE.EdgesGeometry(geometry, 0.1);
     const edgesMat = new THREE.LineBasicMaterial({ color: 0xffffff });
@@ -65,29 +44,28 @@ export default function Wormhole({ geometry, camera }: Props) {
 
   useEffect(() => {
     if (
-      !camera ||
       !title ||
-      !awsRef.current ||
-      !azureRef.current ||
-      !cssRef.current ||
-      !dockerRef.current ||
-      !expressRef.current ||
-      !firebaseRef.current ||
-      !gitRef.current ||
-      !htmlRef.current ||
-      !javascriptRef.current ||
-      !jestRef.current ||
-      !materialuiRef.current ||
-      !mongodbRef.current ||
-      !nextRef.current ||
-      !nodeRef.current ||
-      !postgresRef.current ||
-      !rabbitmqRef.current ||
-      !reactRef.current ||
-      !redisRef.current ||
-      !socketioRef.current ||
-      !tailwindRef.current ||
-      !typescriptRef.current
+      !awsRef.current
+      // !azureRef.current ||
+      // !cssRef.current ||
+      // !dockerRef.current ||
+      // !expressRef.current ||
+      // !firebaseRef.current ||
+      // !gitRef.current ||
+      // !htmlRef.current ||
+      // !javascriptRef.current ||
+      // !jestRef.current ||
+      // !materialuiRef.current ||
+      // !mongodbRef.current ||
+      // !nextRef.current ||
+      // !nodeRef.current ||
+      // !postgresRef.current ||
+      // !rabbitmqRef.current ||
+      // !reactRef.current ||
+      // !redisRef.current ||
+      // !socketioRef.current ||
+      // !tailwindRef.current ||
+      // !typescriptRef.current
     ) {
       return;
     }
@@ -121,20 +99,22 @@ export default function Wormhole({ geometry, camera }: Props) {
     title.lookAt(titleLookAt);
 
     for (let i = 0; i < skills.length; i++) {
+      if (!skills[i]) return;
+
       const p = scaleNumber(i, 0, skills.length - 1, 0.12, 0.93);
       const pos = geometry.parameters.path.getPointAt(p);
       const lookAt = geometry.parameters.path.getPointAt(p - 0.01);
-      skills[i].position.copy(pos);
+      skills[i]?.position.copy(pos);
 
       let maxOffset = 0.2;
       if (window.innerWidth < 768) maxOffset = 0.1;
-      skills[i].position.x += randNumBtw(-maxOffset, maxOffset);
-      skills[i].position.y += randNumBtw(-maxOffset, maxOffset);
-      skills[i].position.z += randNumBtw(-maxOffset, maxOffset);
+      skills[i]!.position.x += randNumBtw(-maxOffset, maxOffset);
+      skills[i]!.position.y += randNumBtw(-maxOffset, maxOffset);
+      skills[i]!.position.z += randNumBtw(-maxOffset, maxOffset);
 
-      skills[i].lookAt(lookAt);
+      skills[i]!.lookAt(lookAt);
     }
-  }, [geometry, camera, title]);
+  }, [geometry, title]);
 
   return (
     <group>
@@ -144,7 +124,7 @@ export default function Wormhole({ geometry, camera }: Props) {
           if (node) setTitle(node);
         }}
       >
-        <Text content="Skills" position={[-0.2, 0, 0]} />
+        <Text content="Skills" position={[-0.2, 0, 0]} size={0.15} />
         <Text
           content="Tools of Mastery"
           size={0.05}
@@ -153,7 +133,7 @@ export default function Wormhole({ geometry, camera }: Props) {
       </group>
 
       <AWS ref={awsRef} />
-      <Azure ref={azureRef} />
+      {/* <Azure ref={azureRef} />
       <CSS ref={cssRef} />
       <Docker ref={dockerRef} />
       <Express ref={expressRef} />
@@ -172,7 +152,7 @@ export default function Wormhole({ geometry, camera }: Props) {
       <Redis ref={redisRef} />
       <SocketIO ref={socketioRef} />
       <Typescript ref={typescriptRef} />
-      <Tailwind ref={tailwindRef} />
+      <Tailwind ref={tailwindRef} /> */}
       <lineSegments geometry={edgesGeo} material={edgesMat} />
     </group>
   );

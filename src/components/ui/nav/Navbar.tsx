@@ -1,21 +1,23 @@
 "use client";
 
+import useMaxScreenSize from "@/hooks/useMaxScreenSize";
 import useSectionScroll from "@/hooks/useSectionScroll";
 import { Color, SectionName } from "@/types";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import Logo from "../icons/LogoIcon";
+import Logo from "../../icons/LogoIcon";
+import LiquidGlassContainer from "../liquid-glass-container/LiquidGlassContainer";
 import Menu from "./Menu";
+import NavContent from "./NavContent";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
   const [color, setColor] = useState<Color>("dark");
-  const activeSection = useSectionScroll({
-    start: "top 10%",
-    end: "bottom 9%",
-  });
+  const activeSection = useSectionScroll();
+  const isMid = useMaxScreenSize("md");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -28,7 +30,7 @@ export default function Navbar() {
       };
 
       const themes: { [key: string]: Color } = {
-        transparent: "dark",
+        transparent: "light",
         "var(--foreground)": "light",
         "var(--background)": "dark",
       };
@@ -47,15 +49,14 @@ export default function Navbar() {
 
   const altColor: Color = color === "light" ? "dark" : "light";
   return (
-    <nav
-      className={`flex fixed z-[40] w-full justify-between items-center m-0 px-xs py-6 sm:px-sm lg:px-lg 2xl:px-2xl lg:py-7 bg-transparent`}
-      id="nav-bar"
-    >
-      <a href="#hero">
-        <Logo color={altColor} />
-      </a>
+    <nav className={`fixed z-[50] w-full`} id="nav-bar">
+      <LiquidGlassContainer className="flex w-full justify-between border-b border-b-gray-300 !shadow-none items-center m-0 px-xs py-6 sm:px-sm lg:px-lg 2xl:px-2xl lg:py-7">
+        <Link href="#hero" className="relative z-100">
+          <Logo color={altColor} />
+        </Link>
 
-      <Menu color={altColor} />
+        {isMid ? <Menu color={altColor} /> : <NavContent />}
+      </LiquidGlassContainer>
     </nav>
   );
 }

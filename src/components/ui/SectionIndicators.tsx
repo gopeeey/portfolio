@@ -67,7 +67,7 @@ export default function SectionIndicators() {
   const theme = sectionColorMap[currentSection];
 
   return (
-    <div className="fixed hidden sm:block text-white z-50 top-[65vh] left-[100%] -translate-x-[100%] pr-xs sm:pr-sm lg:pr-lg 2xl:pr-2xl">
+    <div className="fixed hidden sm:block text-white z-50 top-[65vh] left-full -translate-x-full pr-xs sm:pr-sm lg:pr-lg 2xl:pr-2xl">
       {sections.map((section, index) => (
         <button
           key={section}

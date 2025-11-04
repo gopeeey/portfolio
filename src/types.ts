@@ -43,3 +43,5 @@ export type EmailData = {
   name: string;
   message: string;
 };
+
+export type ScreenBreakPoint = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";

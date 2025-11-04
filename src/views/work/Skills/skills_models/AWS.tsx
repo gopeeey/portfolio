@@ -9,11 +9,11 @@ import * as THREE from "three";
 import Text from "../Text";
 
 export const AWS = forwardRef<THREE.Group, GroupProps>((props, ref) => {
-  const { nodes, materials } = useGLTF("/models/web_logos/aws.glb");
+  // const { nodes, materials } = useGLTF("/models/web_logos/aws.glb");
   return (
     <group {...props} scale={0.5} ref={ref}>
       <Text content="aws" size={0.06} position={[0.025, -0.17, 0]} />
-      <mesh
+      {/* <mesh
         castShadow
         receiveShadow
         geometry={(nodes.Curve004 as THREE.Mesh).geometry}
@@ -30,7 +30,7 @@ export const AWS = forwardRef<THREE.Group, GroupProps>((props, ref) => {
         receiveShadow
         geometry={(nodes.Curve004_2 as THREE.Mesh).geometry}
         material={materials["Material.001"]}
-      />
+      /> */}
     </group>
   );
 });

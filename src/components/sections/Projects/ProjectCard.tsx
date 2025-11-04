@@ -11,7 +11,7 @@ type Props = {
 
 export default function ProjectCard({ project }: Props) {
   return (
-    <div className="text-lighter_grey mb-[10rem] project_card ">
+    <div className="text-lighter_grey mb-40 project_card ">
       <div className="overflow-hidden rounded-2xl border-[1.6px] border-foreground">
         <Image
           src={project.img}

@@ -12,6 +12,7 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/views/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -24,11 +25,16 @@ export default {
         flamenco_regular: "400",
       },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        foreground_transparent: "var(--transparent-foreground)",
+        primary: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        secondary: "rgb(75 85 99 / <alpha-value>)",
+        foreground_transparent:
+          "rgb(var(--transparent-foreground) / <alpha-value>)",
         light_grey: "#65737E",
         lighter_grey: "#859099",
+      },
+      backgroundColor: {
+        secondary: "rgb(var(--foreground) / <alpha-value>)",
       },
       padding: { ...customLengths },
       margin: { ...customLengths },

@@ -5,8 +5,6 @@ import { PerspectiveCamera, View } from "@react-three/drei";
 import gsap from "gsap";
 import { useEffect, useState } from "react";
 import * as THREE from "three";
-import { Person } from "./Person";
-import { Planets } from "./Planets";
 import { Stars } from "./Stars";
 import { Waves } from "./Waves";
 
@@ -59,8 +57,8 @@ export default function HeroScene() {
           }}
           rotation={[0, Math.PI, 0]}
         >
-          <Planets />
-          <Person camera={camera} />
+          {/* <Planets /> */}
+          {/* <Person camera={camera} /> */}
           <Waves />
         </group>
         <Stars radius={50} count={1000} />

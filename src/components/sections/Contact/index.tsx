@@ -80,7 +80,7 @@ export default function Contact() {
   };
 
   return (
-    <Section id={sectionId} className="pb-36 2xl:pb-[16rem] min-h-[220vh] z-30">
+    <Section id={sectionId} className="pb-36 2xl:pb-64 min-h-[220vh] z-30">
       <div className="absolute w-full top-0 left-0 overflow-x-hidden">
         <ContactScene currentAnimation={loading ? "hover" : currentAnimation} />
       </div>
@@ -94,8 +94,8 @@ export default function Contact() {
 
       <form
         className={`
-          mt-[34rem] sm:mt-[35rem] md:mt-[40rem] 
-          lg:mt-[28rem] xl:mt-[37rem]  grid gap-6 grid-cols-1 md:grid-cols-2
+          mt-136 sm:mt-140 md:mt-160 
+          lg:mt-112 xl:mt-148  grid gap-6 grid-cols-1 md:grid-cols-2
           lg:w-[70%] xl:w-[60%] 2xl:w-[50%]
         `}
         onSubmit={handleSubmit}

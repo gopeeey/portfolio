@@ -6,7 +6,7 @@ type Props = {
 };
 
 const stylesMap: { [key in Exclude<Props["variant"], undefined>]: string } = {
-  outlined: "bg-transparent border-[1px] border-gray-300 text-gray-300",
+  outlined: "bg-transparent border border-gray-300 text-gray-300",
   normal: "bg-light_grey text-white",
 };
 

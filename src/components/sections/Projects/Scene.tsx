@@ -4,7 +4,7 @@ import { PerspectiveCamera, View } from "@react-three/drei";
 import gsap from "gsap";
 import { useEffect, useState } from "react";
 import * as THREE from "three";
-import StarsSphere from "../Skills/StarsSphere";
+import StarsSphere from "../../../views/work/Skills/StarsSphere";
 
 export default function ProjectsScene() {
   const [stars, setStars] = useState<THREE.Group | null>(null);

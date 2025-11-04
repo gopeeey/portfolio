@@ -1,21 +1,46 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer theme, base, mui, components, utilities;
+@import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #ede9e9;
+  --background: 0 0 0;
+  --foreground: 237 233 233;
   --transparent-foreground: rgba(237, 233, 233, 0.5);
 }
+
+@theme {
+  --spacing-xs: 2.3rem;
+  --spacing-sm: 4rem;
+  --spacing-md: 5.5rem;
+  --spacing-lg: 7rem;
+  --spacing-2xl: 12rem;
+  --font-flamenco: var(--font-flamenco);
+  --font-montserrat: var(--font-montserrat);
+  --color-primary: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --color-secondary: rgb(75 85 99);
+  --color-light-grey: #65737e;
+  --color-lighter-grey: #859099;
+}
+
+/* html {
+  scroll-behavior: smooth;
+} */
 
 body {
   font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
   background: var(--foreground);
   letter-spacing: -0.03rem;
+  margin: 0px;
+  padding: 0px;
 }
 
 nav {
   transition: all 0.5s;
+}
+
+p {
+  line-height: 1.7rem;
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
 ::selection {
@@ -123,4 +148,11 @@ body::-webkit-scrollbar-thumb {
 
 #loader_white_ball {
   box-shadow: 0px 0px 7px 1px var(--foreground);
+}
+
+.text-border {
+  text-shadow: 0.1px 0.1px 0 var(--transparent-foreground),
+    -0.4px -0.4px 0 var(--transparent-foreground),
+    0.1px -0.1px 0 var(--transparent-foreground),
+    -0.4px 0.4px var(--transparent-foreground);
 }

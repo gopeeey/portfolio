@@ -53,10 +53,12 @@ export default function Loader() {
     return () => ctx.revert();
   }, [progressData.progress, setReady]);
 
+  return null;
+
   return (
     <div
       id="loader_container"
-      className="fixed top-0 left-0 text-white flex justify-center items-center z-[60] w-screen h-screen bg-background"
+      className="fixed top-0 left-0 text-white flex justify-center items-center z-60 w-screen h-screen bg-background"
     >
       <div
         id="loader_white_ball"
