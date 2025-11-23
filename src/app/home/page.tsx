@@ -5,7 +5,6 @@ import Experience from "@/components/sections/Experience";
 import Hero from "@/components/sections/Hero";
 import Projects from "@/components/sections/Projects";
 import SectionIndicators from "@/components/ui/SectionIndicators";
-import Skills from "@/views/work/Skills";
 
 export default function Home() {
   return (
@@ -13,7 +12,6 @@ export default function Home() {
       <MyCanvas />
       <Hero />
       <Experience />
-      <Skills />
       <Projects />
       <Contact />
       <SectionIndicators />

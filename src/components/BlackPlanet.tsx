@@ -19,19 +19,13 @@ export type Props = {
   scale?: number;
 };
 
-export function BlackPlanet({
-  setPlanet,
-  setPlanetGroup,
-  position = [-2.17, 2.17, 0],
-  scale = 1.3,
-}: Props) {
+export function BlackPlanet({ setPlanet, setPlanetGroup, scale = 1.3 }: Props) {
   const { nodes, materials } = useGLTF("/models/black_planet.glb");
 
   return (
     <group
       dispose={null}
       rotation={[0, 0, 0]}
-      position={position}
       scale={scale}
       ref={(node) => {
         if (node && setPlanetGroup) setPlanetGroup(node);
