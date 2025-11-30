@@ -15,11 +15,23 @@ export type Props = {
     > | null
   ) => void;
   setPlanetGroup?: (group: THREE.Group<THREE.Object3DEventMap>) => void;
+  setPlanetBall?: (
+    mesh: THREE.Mesh<
+      THREE.BufferGeometry<THREE.NormalBufferAttributes>,
+      THREE.Material | THREE.Material[],
+      THREE.Object3DEventMap
+    > | null
+  ) => void;
   position?: Vector3;
   scale?: number;
 };
 
-export function BlackPlanet({ setPlanet, setPlanetGroup, scale = 1.3 }: Props) {
+export function BlackPlanet({
+  setPlanet,
+  setPlanetGroup,
+  setPlanetBall,
+  scale = 1.3,
+}: Props) {
   const { nodes, materials } = useGLTF("/models/black_planet.glb");
 
   return (
@@ -48,6 +60,9 @@ export function BlackPlanet({ setPlanet, setPlanetGroup, scale = 1.3 }: Props) {
           geometry={(nodes.Sphere007_Material001_0002 as THREE.Mesh).geometry}
           material={materials["Material.001"]}
           scale={1.036}
+          ref={(node) => {
+            if (node && setPlanetBall) setPlanetBall(node);
+          }}
         >
           <mesh
             castShadow

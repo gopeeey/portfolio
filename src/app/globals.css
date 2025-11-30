@@ -32,6 +32,7 @@ body {
   letter-spacing: -0.03rem;
   margin: 0px;
   padding: 0px;
+  min-height: 100vh;
 }
 
 nav {

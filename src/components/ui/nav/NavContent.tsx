@@ -19,13 +19,13 @@ export default function NavContent() {
         <Link
           href={l.link}
           key={l.name}
-          className={classNames(
-            "font-medium hover:text-gray-500 transition-all text-gray-500",
-            {
-              "text-primary": currentPath.startsWith(l.link),
-              // "text-border": !currentPath.startsWith(l.link),
-            }
-          )}
+          className={classNames("font-medium transition-all text-gray-500", {
+            "text-primary":
+              currentPath === l.link ||
+              (currentPath.startsWith(l.link) &&
+                l.link.length > currentPath.length),
+            // "text-border": !currentPath.startsWith(l.link),
+          })}
         >
           {l.name}
         </Link>

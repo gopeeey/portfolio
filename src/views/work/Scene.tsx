@@ -19,6 +19,7 @@ type PlanetGroup = Parameters<
 const INITIAL_ROTATION_SPEED = 0.008;
 
 export default function ExperienceScene() {
+  const [camera, setCamera] = useState<THREE.PerspectiveCamera | null>(null);
   const [planet, setPlanet] = useState<Planet | null>(null);
   const [planetGroup, setPlanetGroup] = useState<PlanetGroup | null>(null);
   const [ring1Group, setRing1Group] = useState<THREE.Group | null>(null);
@@ -30,10 +31,12 @@ export default function ExperienceScene() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      if (!planetGroup || !planet || !starGroup) return;
+      if (!planetGroup || !planet || !starGroup || !camera) return;
+
+      console.log(planet.material);
 
       ScrollTrigger.create({
-        trigger: "#experience",
+        trigger: "#work",
         start: "top top",
         end: "bottom bottom",
         scrub: 1.5,
@@ -53,15 +56,28 @@ export default function ExperienceScene() {
         },
       });
 
-      gsap.to(planetGroup.position, {
-        x: 1.5,
-        y: 0,
-        duration: 3,
-      });
+      gsap.to(camera.rotation, { y: 0, duration: 3 });
+
+      gsap.fromTo(
+        camera.position,
+        { z: 6, x: 0 },
+        {
+          z: 8,
+          x: -4.5,
+          scrollTrigger: {
+            trigger: "#projects",
+            start: "top top",
+            end: "top+=30% top",
+            scrub: 1.5,
+            id: "camera-zoom",
+            markers: true,
+          },
+        }
+      );
     });
 
     return () => ctx.revert();
-  }, [planetGroup, planet, starGroup]);
+  }, [planetGroup, planet, starGroup, camera]);
 
   // Rotation
   useEffect(() => {
@@ -73,7 +89,7 @@ export default function ExperienceScene() {
       starGroup.rotation.y += rotationSpeed.current / 30;
 
       const ringSpeed = rotationSpeed.current / 3;
-      ring1Group.rotation.y += ringSpeed / 9;
+      ring1Group.rotation.y += ringSpeed / 12;
       ring2Group.rotation.y += ringSpeed / 6;
       ring3Group.rotation.y += ringSpeed / 3;
 
@@ -96,7 +112,15 @@ export default function ExperienceScene() {
       id="experience-scene"
     >
       <group>
-        <PerspectiveCamera fov={20} makeDefault position={[0, 0, 6]} />
+        <PerspectiveCamera
+          fov={20}
+          makeDefault
+          rotation={[0, Math.PI / 4, 0]}
+          position={[0, 0, 30]}
+          ref={(node) => {
+            if (node) setCamera(node);
+          }}
+        />
         {/* <PerspectiveCamera fov={20} makeDefault position={[0, 0, 20]} /> */}
 
         <directionalLight position={[0, 0, 10]} intensity={3} castShadow />
@@ -109,7 +133,7 @@ export default function ExperienceScene() {
             setRing3Group,
           }}
           groupProps={{
-            position: [-2.17, 2.17, 0],
+            position: [1.5, 0, 0],
             rotation: [Math.PI / 20, 0, 0],
           }}
           setGroup={setPlanetGroup}
