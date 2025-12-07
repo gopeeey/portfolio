@@ -1,10 +1,9 @@
 "use client";
 
-import { sections } from "@/constants";
-import { gotoSection } from "@/lib/utils";
-import { Color, SectionName } from "@/types";
+import { Color } from "@/types";
 import gsap from "gsap";
 import { useEffect, useMemo, useState } from "react";
+import { navLinks } from "./data";
 
 type Props = {
   color?: Color;
@@ -117,19 +116,14 @@ export default function Menu({ color }: Props) {
   }, [open]);
 
   const { bgStyle, oppBgStyle, borderStyle, textStyle } = useMemo(() => {
-    const bgStyle = color === "dark" ? "bg-background" : "bg-foreground";
+    const bgStyle = color === "dark" ? "bg-primary" : "bg-foreground";
     const oppBgStyle = color !== "dark" ? "bg-background" : "bg-foreground";
     const borderStyle =
-      color === "dark" ? "border-background" : "border-foreground";
+      color === "dark" ? "border-gray-300" : "border-foreground";
     const textStyle = color !== "dark" ? "text-background" : "text-foreground";
 
     return { bgStyle, oppBgStyle, borderStyle, textStyle };
   }, [color]);
-
-  const handleClick = (section: SectionName) => {
-    gotoSection(section, "instant");
-    setOpen(false);
-  };
 
   return (
     <div className="relative" id="menu_root">
@@ -159,10 +153,9 @@ export default function Menu({ color }: Props) {
             <li
               className={`h-20 ${bgStyle} rounded-t-lg menu_item translate-y-10 opacity-0`}
             ></li>
-            {sections.map((section) => (
+            {navLinks.map((page) => (
               <li
-                key={section}
-                onClick={() => handleClick(section)}
+                key={page.link}
                 className={`capitalize bg-transparent 
                     hover:pl-5 transition-all duration-300 
                     cursor-pointer
@@ -170,9 +163,12 @@ export default function Menu({ color }: Props) {
                     translate-y-10
                     `}
               >
-                <span className={`inline-block px-5 py-3 ${bgStyle} w-full`}>
-                  {section === "hero" ? "home" : section}
-                </span>
+                <a
+                  href={page.link}
+                  className={`inline-block px-5 py-3 ${bgStyle} w-full`}
+                >
+                  {page.name}
+                </a>
               </li>
             ))}
             <li

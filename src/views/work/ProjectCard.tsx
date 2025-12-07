@@ -12,7 +12,7 @@ type Props = {
 
 export default function ProjectCard({ project }: Props) {
   return (
-    <LiquidGlassContainer className="text-lighter_grey mb-40 project_card rounded-3xl overflow-hidden">
+    <LiquidGlassContainer className="text-lighter_grey project_card rounded-3xl overflow-hidden">
       <div>
         <Image
           src={project.img}

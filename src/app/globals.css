@@ -45,13 +45,13 @@ p {
 }
 
 ::selection {
-  color: var(--foreground);
-  background: var(--background);
+  color: rgb(var(--foreground));
+  background: rgb(var(--background));
 }
 
 .white-selection ::selection {
-  color: var(--background);
-  background: var(--foreground);
+  color: rgb(var(--background));
+  background: rgb(var(--foreground));
 }
 
 body::-webkit-scrollbar {

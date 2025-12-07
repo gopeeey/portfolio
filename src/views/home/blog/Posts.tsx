@@ -48,12 +48,17 @@ export default function Posts({ posts }: Props) {
         ))}
 
         <div className="flex flex-col items-center justify-center">
-          <Button className="!p-5 rounded-full!" glassClassName="rounded-full">
-            <IconArrowRight />
-          </Button>
-          <Typography className="shrink-0 whitespace-nowrap text-sm">
-            See more
-          </Typography>
+          <a href="https://medium.com/@sammygopeh" target="_blank">
+            <Button
+              className="!p-5 rounded-full!"
+              glassClassName="rounded-full"
+            >
+              <IconArrowRight />
+            </Button>
+            <Typography className="shrink-0 whitespace-nowrap text-sm">
+              See more
+            </Typography>
+          </a>
         </div>
       </div>
     </div>

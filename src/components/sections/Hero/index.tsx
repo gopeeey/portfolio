@@ -38,7 +38,7 @@ export default function Hero() {
   return (
     <Section
       id="hero"
-      className="bg-background text-foreground flex flex-col justify-center white-selection"
+      className="bg-background text-foreground flex flex-col justify-center"
     >
       <div className="absolute w-screen top-0 left-0 overflow-x-hidden">
         <HeroScene />

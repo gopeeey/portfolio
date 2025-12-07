@@ -70,7 +70,6 @@ export default function ExperienceScene() {
             end: "top+=30% top",
             scrub: 1.5,
             id: "camera-zoom",
-            markers: true,
           },
         }
       );

@@ -62,14 +62,14 @@ export default function Experience() {
         useScroll={false}
       />
 
-      <div className="mt-140">
+      <div className="mt-140 relative z-30">
         {roles.map((role) => (
           <div
             key={role.id}
             className="sticky_container h-[150vh] mb-160"
             id={`role_container_${role.id}`}
           >
-            <RoleCard role={role} className="relative mb-40 z-30" />
+            <RoleCard role={role} className="relative mb-40" />
           </div>
         ))}
       </div>

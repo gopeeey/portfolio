@@ -1,14 +1,18 @@
-import { getPosts } from "@/app/server/posts";
 import SectionTitle from "@/components/SectionTitle";
 import Section from "@/components/ui/Section";
+import Parser from "rss-parser";
 import Posts from "./Posts";
+import { rssFeedToPosts } from "./utils";
 
 const sectionId = "blog";
 
 export default async function Blog() {
-  const postsData = await getPosts();
+  const feed = await new Parser({
+    customFields: { item: ["content:encoded"] },
+  }).parseURL("https://medium.com/feed/@sammygopeh");
 
-  console.log(postsData);
+  // console.log(feed);
+
   return (
     <Section id={sectionId} className="overflow-hidden">
       <SectionTitle
@@ -19,7 +23,7 @@ export default async function Blog() {
         className="mt-160"
       />
 
-      <Posts posts={postsData.results} />
+      <Posts posts={rssFeedToPosts(feed)} />
     </Section>
   );
 }

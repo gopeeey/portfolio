@@ -10,10 +10,7 @@ const sectionId = "projects";
 
 export default function Projects() {
   return (
-    <Section
-      id={sectionId}
-      className="bg-background z-10 overflow-hidden white-selection"
-    >
+    <Section id={sectionId} className="bg-background z-10 overflow-hidden">
       <div className="absolute w-screen top-0 left-0 overflow-x-hidden">
         <ProjectsScene />
       </div>

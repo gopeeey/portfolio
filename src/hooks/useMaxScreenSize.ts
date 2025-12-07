@@ -11,6 +11,9 @@ export const queries: Record<BreakPoint, string> = {
   xl: "(max-width: 1535px)",
 };
 
-export default function useMaxScreenSize(breakpoint: BreakPoint) {
-  return useMediaQuery(queries[breakpoint]);
+export default function useMaxScreenSize(
+  breakpoint: BreakPoint,
+  defaultValue = false
+) {
+  return useMediaQuery(queries[breakpoint], defaultValue);
 }
